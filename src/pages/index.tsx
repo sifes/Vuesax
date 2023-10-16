@@ -1,4 +1,5 @@
-import { Header } from '@/components/Header'
+import { Footer } from '@/components/shared/Footer'
+import { Header } from '@/components/shared/Header'
 import Head from 'next/head'
 
 export default function Home() {
@@ -10,7 +11,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        <Header></Header>
+        <Header />
+        <Footer />
       </main>
     </>
   )
