@@ -11,10 +11,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Toolbar } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
-import Image from 'next/image';
+import { Logo } from '@/ui/Logo';
 
 
-const navItems = ['Home', 'Contact', 'Products'];
+const navItems = ['Home', 'Contacts', 'Products'];
 
 export function Header() {
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -24,10 +24,9 @@ export function Header() {
     };
     return (
         <Box sx={{ display: 'flex' }}>
-            <AppBar component="nav" color='secondary'>
+            <AppBar component="nav" color='secondary' position='static'>
                 <Toolbar >
-                    <Image src={require('../assets/logo.png')} alt='logo' />
-                    <Typography variant="subtitle1" sx={{ ml: '12px', flexGrow: 1 }} color='primary'>Vuesax</Typography>
+                    <Logo />
                     <IconButton
                         onClick={handleDrawerToggle}
                         sx={{ mr: 2, display: { sm: 'none' } }}

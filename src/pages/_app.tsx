@@ -5,7 +5,8 @@ import { ThemeProvider } from '@mui/material/styles'
 import type { AppProps } from 'next/app'
 import createEmotionCache from '../utils/createEmotionCache';
 import { CssBaseline } from '@mui/material'
-
+import { Header } from '@/components/shared/Header'
+import { Footer } from '@/components/shared/Footer'
 interface MyAppProps extends AppProps {
   emotionCache?: any;
 }
@@ -17,7 +18,9 @@ export default function App({ Component, pageProps, emotionCache = clientSideEmo
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <Header />
         <Component {...pageProps} />
+        <Footer />
       </ThemeProvider>
     </CacheProvider>
   )
