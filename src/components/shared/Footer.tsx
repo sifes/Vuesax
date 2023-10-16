@@ -6,29 +6,27 @@ import { Logo } from '@/ui/Logo';
 
 export function Footer() {
     return (
-        <Paper sx={{
+        <Box sx={{
             width: '100%',
-            background: 'background',
-        }} component="footer" square variant="elevation" >
+            padding: 0,
+            backgroundColor: 'secondary.dark',
+        }} component="footer"  >
             <Box sx={{
-                flexGrow: 1,
-                justifyContent: "center",
                 alignItems: "center",
                 display: "flex",
                 flexDirection: "column",
-                my: 1
             }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                     <IconButton color='primary' href='https://t.me/notsifes' target="_blank" rel="noopener noreferrer">
-                        <TelegramIcon sx={{ width: 32, height: 32 }} />
+                        <TelegramIcon sx={{ width: 28, height: 28 }} />
                     </IconButton>
-                    <Logo></Logo>
+                    <Logo />
                     <IconButton color='primary' href='https://github.com/sifes' target="_blank" rel="noopener noreferrer" >
-                        <GitHubIcon sx={{ width: 32, height: 32 }} />
+                        <GitHubIcon sx={{ width: 28, height: 28 }} />
                     </IconButton>
                 </Box>
             </Box>
 
-        </Paper >
+        </Box >
     );
 }

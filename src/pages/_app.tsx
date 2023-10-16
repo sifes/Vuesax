@@ -7,6 +7,7 @@ import createEmotionCache from '../utils/createEmotionCache';
 import { CssBaseline } from '@mui/material'
 import { Header } from '@/components/shared/Header'
 import { Footer } from '@/components/shared/Footer'
+import Layout from '@/components/shared/Layout'
 interface MyAppProps extends AppProps {
   emotionCache?: any;
 }
@@ -17,10 +18,9 @@ export default function App({ Component, pageProps, emotionCache = clientSideEmo
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </CacheProvider>
   )

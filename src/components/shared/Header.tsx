@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppBar } from '@mui/material';
+import { AppBar, styled } from '@mui/material';
 import { Box } from '@mui/material';
 import { Drawer } from '@mui/material';
 import { IconButton } from '@mui/material';
@@ -9,12 +9,19 @@ import { ListItemButton } from '@mui/material';
 import { ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Toolbar } from '@mui/material';
-import { Typography } from '@mui/material';
-import { Button } from '@mui/material';
 import { Logo } from '@/ui/Logo';
+import Link from 'next/link';
 
-
-const navItems = ['Home', 'Contacts', 'Products'];
+const NavLink = styled(Link)(({ theme }) => ({
+    color: theme.palette.primary.main,
+    display: 'flex',
+    alignItems: 'center',
+    flex: '1 1 auto',
+    textTransform: 'capitalize',
+    '&:hover': {
+        color: theme.palette.primary.dark,
+    },
+}));
 
 export function Header() {
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -34,12 +41,10 @@ export function Header() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                        {navItems.map((item) => (
-                            <Button key={item} sx={{ color: 'text.main', fontSize: 18 }} >
-                                {item}
-                            </Button>
-                        ))}
+                    <Box sx={{ display: { xs: 'none', sm: 'flex', gap: 24 } }}>
+                        <NavLink href='/' sx={{ color: 'text.main', fontSize: 24 }}>Home</NavLink>
+                        <NavLink href='/contacts' sx={{ color: 'text.main', fontSize: 24 }}>Contacts</NavLink>
+                        <NavLink href='/products' sx={{ color: 'text.main', fontSize: 24 }}>Products</NavLink>
                     </Box>
                 </Toolbar>
             </AppBar>
@@ -52,16 +57,17 @@ export function Header() {
                     sx={{
                         display: { xs: 'block', sm: 'none' },
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, background: 'background' },
-                    }}
-                >
-                    <List sx={{ padding: '30px 0 0 0' }}>
-                        {navItems.map((item) => (
-                            <ListItem key={item} disablePadding>
-                                <ListItemButton sx={{ textAlign: 'center' }}>
-                                    <ListItemText primary={item} />
-                                </ListItemButton>
-                            </ListItem>
-                        ))}
+                    }}>
+                    <List sx={{ padding: '30px' }}>
+                        <ListItem disablePadding>
+                            <NavLink href='/' sx={{ color: 'text.main', fontSize: 24 }}>Home</NavLink>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <NavLink href='/contacts' sx={{ color: 'text.main', fontSize: 24 }}>Contacts</NavLink>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <NavLink href='/products' sx={{ color: 'text.main', fontSize: 24 }}>Products</NavLink>
+                        </ListItem>
                     </List>
                 </Drawer>
             </nav>
