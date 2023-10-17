@@ -15,7 +15,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
                 <CssBaseline />
                 <Header />
-                <main style={{ flex: '1 1 auto', }}>{children}</main>
+                <main style={{ flex: '1 1 auto', height: 1 }}>{children}</main>
                 <Footer />
             </Box>
         </>

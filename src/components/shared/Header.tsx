@@ -41,7 +41,7 @@ export function Header() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Box sx={{ display: { xs: 'none', sm: 'flex', gap: 24 } }}>
+                    <Box sx={{ display: { xs: 'none', sm: 'flex', gap: 48 } }}>
                         <NavLink href='/' sx={{ color: 'text.main', fontSize: 24 }}>Home</NavLink>
                         <NavLink href='/contacts' sx={{ color: 'text.main', fontSize: 24 }}>Contacts</NavLink>
                         <NavLink href='/products' sx={{ color: 'text.main', fontSize: 24 }}>Products</NavLink>

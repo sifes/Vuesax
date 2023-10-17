@@ -9,7 +9,7 @@ export function Footer() {
         <Box sx={{
             width: '100%',
             padding: 0,
-            backgroundColor: 'secondary.dark',
+            bgcolor: 'secondary.dark',
         }} component="footer"  >
             <Box sx={{
                 alignItems: "center",
