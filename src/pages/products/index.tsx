@@ -1,5 +1,6 @@
 import { Filters } from '@/components/filters/Filters'
 import { Products } from '@/components/products/Products'
+import { SearchProducts } from '@/components/products/SearchProducts'
 import { Box } from '@mui/material'
 import React from 'react'
 
@@ -14,7 +15,16 @@ const ProductsPage: React.FC<Iindex> = () => {
             padding: { lg: '25px 32px', xs: '20px 10px' },
         }}>
             <Filters />
-            <Products />
+            <Box sx={{
+                width: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '28px'
+            }}>
+                <SearchProducts />
+                <Products />
+            </Box>
+
         </Box>
     )
 }
