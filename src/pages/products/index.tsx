@@ -1,5 +1,6 @@
 import { Filters } from '@/components/filters/Filters'
 import { Products } from '@/components/products/Products'
+import { PaginationProducts } from '@/components/products/PaginationProducts'
 import { SearchProducts } from '@/components/products/SearchProducts'
 import { Box } from '@mui/material'
 import React from 'react'
@@ -24,8 +25,6 @@ export interface IProduct {
     thumbnail: string
     title: string
 }
-
-
 const ProductsPage: React.FC<Iindex> = (props) => {
     const { products } = props
     return (
@@ -33,6 +32,7 @@ const ProductsPage: React.FC<Iindex> = (props) => {
             <Filters />
             <Box sx={{ width: 1, display: 'flex', flexDirection: 'column', gap: '28px' }}>
                 <SearchProducts />
+                <PaginationProducts />
                 <Products products={products} />
             </Box>
         </Box >
