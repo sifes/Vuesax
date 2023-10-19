@@ -20,9 +20,9 @@ export const Filters: React.FC<IFilters> = () => {
                 borderRadius: '8px',
                 bgcolor: 'secondary.main',
                 boxShadow: ' 0px 2px 8px 0px rgba(0, 0, 0, 0.14)',
-                padding: '25px 32px',
+                padding: { sm: '25px 16px', md: '25px 32px' },
                 flex: '0 1 auto',
-                maxWidth: '370px',
+                maxWidth: { sm: '180px', md: '370px' },
                 gap: '20px',
             }}>
                 <Category />

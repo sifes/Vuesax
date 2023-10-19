@@ -34,15 +34,14 @@ const ProductsPage: React.FC<IProductPage> = ({ products: initialProducts }) => 
         const res = axios.get(`https://dummyjson.com/products?skip=${(page - 1) * 30}`)
         res.then(res => setProducts(res.data.products)).finally(() => setIsLoading(false))
     }, [page])
-    console.log(isLoading)
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: { sm: 'row', xs: 'column' }, gap: '30px', padding: { lg: '25px 32px', xs: '20px 10px' }, }}>
+        <Box sx={{ display: 'flex', flexDirection: { sm: 'row', xs: 'column' }, gap: { md: '30px', xs: '16px' }, padding: { lg: '25px 32px', xs: '20px 20px' }, maxWidth: '1540px', margin: '0 auto' }}>
             <Filters />
             <Box sx={{ width: 1, display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 <SearchProducts />
                 <PaginationProducts page={page} setPage={setPage} />
-                <Products products={products} />
+                <Products products={products} isLoading={isLoading} />
             </Box>
         </Box >
     )
