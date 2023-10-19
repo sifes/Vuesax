@@ -6,7 +6,7 @@ import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 interface IProducts {
     products: IProduct[]
 }
-export const Products: React.FC<IProducts> = ({ products }) => {
+export const Products: React.FC<IProducts> = ({ products = [] }) => {
     return (
         <Grid container spacing={4} >
             {products.map(({ title, thumbnail, id, category, brand, price, discountPercentage, rating }) => (

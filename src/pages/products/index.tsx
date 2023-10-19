@@ -6,7 +6,7 @@ import { Box } from '@mui/material'
 import React from 'react'
 import axios from 'axios';
 
-interface Iindex {
+interface IProductPage {
     total: number;
     skip: number;
     limit: number;
@@ -25,14 +25,23 @@ export interface IProduct {
     thumbnail: string
     title: string
 }
-const ProductsPage: React.FC<Iindex> = (props) => {
-    const { products } = props
+const ProductsPage: React.FC<IProductPage> = ({ products: initialProducts }) => {
+    const [products, setProducts] = React.useState(initialProducts)
+    const [isLoading, setIsLoading] = React.useState(false)
+    const [page, setPage] = React.useState(1)
+    React.useEffect(() => {
+        setIsLoading(true)
+        const res = axios.get(`https://dummyjson.com/products?skip=${(page - 1) * 30}`)
+        res.then(res => setProducts(res.data.products)).finally(() => setIsLoading(false))
+    }, [page])
+    console.log(isLoading)
+
     return (
         <Box sx={{ display: 'flex', flexDirection: { sm: 'row', xs: 'column' }, gap: '30px', padding: { lg: '25px 32px', xs: '20px 10px' }, }}>
             <Filters />
-            <Box sx={{ width: 1, display: 'flex', flexDirection: 'column', gap: '28px' }}>
+            <Box sx={{ width: 1, display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 <SearchProducts />
-                <PaginationProducts />
+                <PaginationProducts page={page} setPage={setPage} />
                 <Products products={products} />
             </Box>
         </Box >
