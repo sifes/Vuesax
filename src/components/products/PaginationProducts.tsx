@@ -26,10 +26,10 @@ export const PaginationProducts: React.FC<IPaginationProducts> = ({ page, setPag
                         height: '28px',
                     },
                     '& .MuiButtonBase-root': {
-                        margin: '0 2px'
+                        margin: '0 1px'
                     },
 
-                }} count={4} page={page} onChange={handleChange} />
+                }} count={7} page={page} onChange={handleChange} />
         </Stack>
     )
 }

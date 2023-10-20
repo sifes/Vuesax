@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box, Drawer, List, ListItem, Divider, Button, IconButton, Typography, FormGroup, FormControlLabel, Checkbox, styled } from '@mui/material'
-import { Category } from './Category'
+import { Box, Drawer, Divider, Button, IconButton } from '@mui/material'
+import Category from './Category'
 import { PriceSlider } from './PriceSlider'
 import { RatingFilter } from './Rating'
 import SortIcon from '@mui/icons-material/Sort';
@@ -8,6 +8,9 @@ interface IFilters { }
 
 export const Filters: React.FC<IFilters> = () => {
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [category, setCategory] = React.useState();
+    const [price, setPrice] = React.useState();
+    const [rating, setRating] = React.useState();
 
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
@@ -25,13 +28,9 @@ export const Filters: React.FC<IFilters> = () => {
                 maxWidth: { sm: '180px', md: '370px' },
                 gap: '20px',
             }}>
-                <Category />
+                <Category categories={[]} />
                 <Divider color='#D6D6D6' />
                 <PriceSlider />
-                <Divider color='#D6D6D6' />
-                Category
-                <Divider color='#D6D6D6' />
-                Brand
                 <Divider color='#D6D6D6' />
                 <RatingFilter />
                 <Button variant='contained'>Clear All Filters</Button>
@@ -63,13 +62,9 @@ export const Filters: React.FC<IFilters> = () => {
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, background: 'background' },
                     }}>
                     <Box sx={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                        <Category />
+                        <Category categories={['as']} />
                         <Divider color='#D6D6D6' />
                         <PriceSlider />
-                        <Divider color='#D6D6D6' />
-                        Category
-                        <Divider color='#D6D6D6' />
-                        Brand
                         <Divider color='#D6D6D6' />
                         <RatingFilter />
                         <Button variant='contained'>Clear All Filters</Button>

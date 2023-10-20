@@ -25,18 +25,24 @@ export interface IProduct {
     thumbnail: string
     title: string
 }
+export interface IFilters {
+    category: string
+    price: number
+    rating: number
+}
 const ProductsPage: React.FC<IProductPage> = ({ products: initialProducts }) => {
     const [products, setProducts] = React.useState(initialProducts)
+    const [filters, setFilters] = React.useState({})
     const [isLoading, setIsLoading] = React.useState(false)
     const [page, setPage] = React.useState(1)
     React.useEffect(() => {
         setIsLoading(true)
-        const res = axios.get(`https://dummyjson.com/products?skip=${(page - 1) * 30}`)
+        const res = axios.get(`https://dummyjson.com/products?skip=${(page - 1) * 15}&limit=15`)
         res.then(res => setProducts(res.data.products)).finally(() => setIsLoading(false))
     }, [page])
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: { sm: 'row', xs: 'column' }, gap: { md: '30px', xs: '16px' }, padding: { lg: '25px 32px', xs: '20px 20px' }, maxWidth: '1540px', margin: '0 auto' }}>
+        <Box sx={{ display: 'flex', flexDirection: { sm: 'row', xs: 'column' }, gap: { md: '30px', xs: '16px' }, padding: { lg: '25px 32px', xs: '20px 12px' }, maxWidth: '1540px', margin: '0 auto' }}>
             <Filters />
             <Box sx={{ width: 1, display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 <SearchProducts />

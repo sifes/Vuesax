@@ -8,18 +8,18 @@ interface IProducts {
     isLoading: boolean
 }
 export const Products: React.FC<IProducts> = ({ products = [], isLoading }) => {
-    console.log(isLoading)
     return (
         <Grid container spacing={{ md: 4, xs: 2 }} height={1} justifyContent={'center'} >
+
             {isLoading ?
                 [1, 2, 3, 4, 5, 6].map((item) =>
-                (<Grid key={item} item md={6} xl={4} sx={{ justifySelf: 'start', margin: 0 }}  >
-                    <Skeleton width={'100%'} height={'700px'} >
+                (<Grid key={item} item xl={4} md={4} xs={12} sm={6} sx={{ maxHeight: '483px', maxWidth: '369px' }}  >
+                    <Skeleton key={item} width={'100%'} sx={{ maxWidth: '369px', maxHeight: '483px', transform: 'none', height: { sm: '100%', xs: '400px' }, animationDelay: '-1s' }} >
                     </Skeleton>
                 </Grid>))
                 :
                 products.map(({ title, thumbnail, id, category, brand, price, discountPercentage, rating }) => (
-                    <Grid item xl={4} md={4} xs={12} sm={6} sx={{ maxWidth: '450px' }}  >
+                    <Grid key={id} item xl={4} md={4} xs={12} sm={6} sx={{ maxWidth: '369px' }}  >
                         <Card sx={{ bgcolor: 'secondary.main', height: 1, display: 'flex', flexDirection: 'column' }} key={id}>
                             <CardMedia sx={{ height: 0, paddingTop: '80%' }} image={thumbnail} title={title} />
                             <CardContent sx={{ padding: '12px', flex: '1 1 auto', display: 'flex', flexDirection: 'column' }}>
@@ -43,7 +43,10 @@ export const Products: React.FC<IProducts> = ({ products = [], isLoading }) => {
                                 <Button sx={{ width: 1 }} size="small" variant='contained' >Learn More <ArrowRightAltIcon></ArrowRightAltIcon></Button>
                             </CardActions>
                         </Card>
-                    </Grid>))}
-        </Grid >
+                    </Grid>
+                ))
+            }
+        </Grid>
+
     )
 }
