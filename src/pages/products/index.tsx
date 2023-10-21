@@ -5,12 +5,10 @@ import { SearchProducts } from '@/components/products/SearchProducts'
 import { Box } from '@mui/material'
 import React from 'react'
 import axios from 'axios';
+import { toCategories, toMaxPrice } from '@/utils/helpers'
 
-interface IProductPage {
-    total: number;
-    skip: number;
-    limit: number;
-    products: IProduct[];
+interface ProductPageProps {
+    initialProducts: IProduct[];
 }
 export interface IProduct {
     brand: string
@@ -30,20 +28,17 @@ export interface IFilters {
     price: number
     rating: number
 }
-const ProductsPage: React.FC<IProductPage> = ({ products: initialProducts }) => {
+const ProductsPage: React.FC<ProductPageProps> = ({ initialProducts }) => {
     const [products, setProducts] = React.useState(initialProducts)
-    const [filters, setFilters] = React.useState({})
-    const [isLoading, setIsLoading] = React.useState(false)
+    const [isLoading, setIsLoading] = React.useState(true)
     const [page, setPage] = React.useState(1)
     React.useEffect(() => {
-        setIsLoading(true)
-        const res = axios.get(`https://dummyjson.com/products?skip=${(page - 1) * 15}&limit=15`)
-        res.then(res => setProducts(res.data.products)).finally(() => setIsLoading(false))
+        setProducts(initialProducts.slice(15 * (page - 1), page * 15))
+        setIsLoading(false)
     }, [page])
-
     return (
         <Box sx={{ display: 'flex', flexDirection: { sm: 'row', xs: 'column' }, gap: { md: '30px', xs: '16px' }, padding: { lg: '25px 32px', xs: '20px 12px' }, maxWidth: '1540px', margin: '0 auto' }}>
-            <Filters />
+            <Filters products={initialProducts} setProducts={setProducts} />
             <Box sx={{ width: 1, display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 <SearchProducts />
                 <PaginationProducts page={page} setPage={setPage} />
@@ -56,6 +51,6 @@ const ProductsPage: React.FC<IProductPage> = ({ products: initialProducts }) => 
 export default ProductsPage
 
 export async function getServerSideProps() {
-    const res = await axios.get(`https://dummyjson.com/products`)
-    return { props: { ...res.data } }
+    const data = (await axios.get(`https://dummyjson.com/products?limit=100`)).data
+    return { props: { initialProducts: data.products } }
 }

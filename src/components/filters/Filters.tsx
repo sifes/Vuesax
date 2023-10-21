@@ -1,20 +1,23 @@
 import React from 'react'
 import { Box, Drawer, Divider, Button, IconButton } from '@mui/material'
-import Category from './Category'
+import { Category } from './Category'
 import { PriceSlider } from './PriceSlider'
 import { RatingFilter } from './Rating'
 import SortIcon from '@mui/icons-material/Sort';
-interface IFilters { }
+import { IProduct } from '@/pages/products'
+import { toCategories, toMaxPrice } from '@/utils/helpers'
 
-export const Filters: React.FC<IFilters> = () => {
+interface FiltersProps {
+    products: IProduct[]
+    setProducts: React.Dispatch<React.SetStateAction<IProduct[]>>
+}
+
+export const Filters: React.FC<FiltersProps> = ({ products, setProducts }) => {
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [filters, setFilters] = React.useState({})
     const [category, setCategory] = React.useState();
-    const [price, setPrice] = React.useState();
     const [rating, setRating] = React.useState();
 
-    const handleDrawerToggle = () => {
-        setMobileOpen((prevState) => !prevState);
-    };
     return (
         <>
             <Box sx={{
@@ -28,13 +31,12 @@ export const Filters: React.FC<IFilters> = () => {
                 maxWidth: { sm: '180px', md: '370px' },
                 gap: '20px',
             }}>
-                <Category categories={[]} />
+                <Category categories={toCategories(products)} />
                 <Divider color='#D6D6D6' />
-                <PriceSlider />
+                <PriceSlider maxPrice={toMaxPrice(products)} />
                 <Divider color='#D6D6D6' />
                 <RatingFilter />
                 <Button variant='contained'>Clear All Filters</Button>
-                <Button variant='contained'>Apply Changes</Button>
             </Box>
 
 
@@ -48,27 +50,28 @@ export const Filters: React.FC<IFilters> = () => {
                 boxShadow: ' 0px 2px 8px 0px rgba(0, 0, 0, 0.14)',
                 padding: '0px',
             }}>
-                <IconButton onClick={handleDrawerToggle}
-                    sx={{ display: { sm: 'none' }, gap: '10px', fontSize: 32 }}
-                    color='primary'>Filters<SortIcon /> </IconButton>
+                <IconButton onClick={() => setMobileOpen((prevState) => !prevState)}
+                    sx={{ display: { sm: 'none' }, gap: '10px', fontSize: 32, }} color='primary'>
+                    Filters
+                    <SortIcon />
+                </IconButton>
                 <Drawer
                     variant="temporary"
                     open={mobileOpen}
                     anchor='right'
-                    onClose={handleDrawerToggle}
+                    onClose={() => setMobileOpen((prevState) => !prevState)}
                     ModalProps={{ keepMounted: true, }}
                     sx={{
                         display: { xs: 'block', sm: 'none' },
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, background: 'background' },
                     }}>
                     <Box sx={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                        <Category categories={['as']} />
+                        <Category categories={toCategories(products)} />
                         <Divider color='#D6D6D6' />
-                        <PriceSlider />
+                        <PriceSlider maxPrice={toMaxPrice(products)} />
                         <Divider color='#D6D6D6' />
                         <RatingFilter />
                         <Button variant='contained'>Clear All Filters</Button>
-                        <Button variant='contained'>Apply Changes</Button>
                     </Box>
                 </Drawer>
             </Box >

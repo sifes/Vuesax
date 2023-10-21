@@ -1,19 +1,19 @@
 import React from 'react'
-import { Box, Typography, FormGroup, FormControlLabel, Checkbox } from '@mui/material'
-import axios from 'axios'
-import { GetStaticProps } from 'next'
-import { IProduct } from '@/pages/products'
+import { Box, Typography, FormGroup, FormControlLabel, Checkbox, Button } from '@mui/material'
 
 interface ICategory {
     categories: string[]
 }
-const Category: React.FC<ICategory> = ({ categories }) => {
-    console.log(categories)
+export const Category: React.FC<ICategory> = ({ categories }) => {
     return (
         <Box>
             <Typography variant='h6'>Category</Typography>
-            <FormGroup sx={{ padding: '5px 0', gap: 1 }}>
-                <FormControlLabel control={<Checkbox />} label="smartphones" />
+            <FormGroup sx={{ padding: '5px 0', gap: 1, marginBottom: '10px' }}>
+                {categories.map((category) => (
+                    <FormControlLabel key={category} control={<Checkbox />} label={category} />
+                ))}
+
+                {/* <FormControlLabel control={<Checkbox />} label="smartphones" />
                 <FormControlLabel control={<Checkbox />} label="laptops" />
                 <FormControlLabel control={<Checkbox />} label="fragrances" />
                 <FormControlLabel control={<Checkbox />} label="skincare" />
@@ -29,21 +29,11 @@ const Category: React.FC<ICategory> = ({ categories }) => {
                 <FormControlLabel control={<Checkbox />} label="sunglasses" />
                 <FormControlLabel control={<Checkbox />} label="automotive" />
                 <FormControlLabel control={<Checkbox />} label="motorcycle" />
-                <FormControlLabel control={<Checkbox />} label="lighting" />
+                <FormControlLabel control={<Checkbox />} label="lighting" /> */}
             </FormGroup>
+
+            <Button size='small' variant='contained'>Apply Changes</Button>
+
         </Box>
     )
 }
-export default Category
-
-export const getStaticProps = async () => {
-    const res = await axios.get('https://dummyjson.com/products?limit=100')
-    const categories = await res.data.products.map((product: IProduct) => product.category)
-    const uniqueCategories = []
-    return {
-        props: {
-            categories,
-        }
-    }
-}
-
