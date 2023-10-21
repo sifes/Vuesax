@@ -5,12 +5,18 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 interface IProducts {
     products: IProduct[]
-    isLoading: boolean
+    currentPage: number
 }
-export const Products: React.FC<IProducts> = ({ products = [], isLoading }) => {
-    return (
-        <Grid container spacing={{ md: 4, xs: 2 }} height={1} justifyContent={'center'} >
+export const Products: React.FC<IProducts> = ({ products = [], currentPage }) => {
+    const [isLoading, setIsLoading] = React.useState(true)
+    const [currentProducts, setCurrentProducts] = React.useState(products)
 
+    React.useEffect(() => {
+        setCurrentProducts(products.slice(15 * (currentPage - 1), currentPage * 15))
+        setIsLoading(false)
+    }, [currentPage, products])
+    return (
+        <Grid container spacing={{ md: 4, xs: 2 }} justifyContent={'center'} >
             {isLoading ?
                 [1, 2, 3, 4, 5, 6].map((item) =>
                 (<Grid key={item} item xl={4} md={4} xs={12} sm={6} sx={{ maxHeight: '483px', maxWidth: '369px' }}  >
@@ -18,7 +24,7 @@ export const Products: React.FC<IProducts> = ({ products = [], isLoading }) => {
                     </Skeleton>
                 </Grid>))
                 :
-                products.map(({ title, thumbnail, id, category, brand, price, discountPercentage, rating }) => (
+                currentProducts.map(({ title, thumbnail, id, category, brand, price, discountPercentage, rating }) => (
                     <Grid key={id} item xl={4} md={4} xs={12} sm={6} sx={{ maxWidth: '369px' }}  >
                         <Card sx={{ bgcolor: 'secondary.main', height: 1, display: 'flex', flexDirection: 'column' }} key={id}>
                             <CardMedia sx={{ height: 0, paddingTop: '80%' }} image={thumbnail} title={title} />

@@ -8,3 +8,6 @@ export function toCategories(arr: IProduct[]): string[] {
 export function toMaxPrice(arr: IProduct[]): number {
     return arr.reduce((accum: number, currVal: IProduct) => Math.max(currVal.price, accum), 0)
 }
+export function toPagesCount(arr: IProduct[]): number {
+    return Math.ceil(arr.length / 15)
+}

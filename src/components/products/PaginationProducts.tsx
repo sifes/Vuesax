@@ -3,8 +3,9 @@ import { Pagination, Stack } from '@mui/material'
 interface IPaginationProducts {
     page: number;
     setPage: React.Dispatch<React.SetStateAction<number>>
+    count: number
 }
-export const PaginationProducts: React.FC<IPaginationProducts> = ({ page, setPage }) => {
+export const PaginationProducts: React.FC<IPaginationProducts> = ({ page, setPage, count }) => {
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
     };
@@ -29,7 +30,7 @@ export const PaginationProducts: React.FC<IPaginationProducts> = ({ page, setPag
                         margin: '0 1px'
                     },
 
-                }} count={7} page={page} onChange={handleChange} />
+                }} count={count} page={page} onChange={handleChange} />
         </Stack>
     )
 }

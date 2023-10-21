@@ -5,7 +5,7 @@ import { SearchProducts } from '@/components/products/SearchProducts'
 import { Box } from '@mui/material'
 import React from 'react'
 import axios from 'axios';
-import { toCategories, toMaxPrice } from '@/utils/helpers'
+import { toCategories, toMaxPrice, toPagesCount } from '@/utils/helpers'
 
 interface ProductPageProps {
     initialProducts: IProduct[];
@@ -30,19 +30,14 @@ export interface IFilters {
 }
 const ProductsPage: React.FC<ProductPageProps> = ({ initialProducts }) => {
     const [products, setProducts] = React.useState(initialProducts)
-    const [isLoading, setIsLoading] = React.useState(true)
     const [page, setPage] = React.useState(1)
-    React.useEffect(() => {
-        setProducts(initialProducts.slice(15 * (page - 1), page * 15))
-        setIsLoading(false)
-    }, [page])
     return (
         <Box sx={{ display: 'flex', flexDirection: { sm: 'row', xs: 'column' }, gap: { md: '30px', xs: '16px' }, padding: { lg: '25px 32px', xs: '20px 12px' }, maxWidth: '1540px', margin: '0 auto' }}>
             <Filters products={initialProducts} setProducts={setProducts} />
             <Box sx={{ width: 1, display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 <SearchProducts />
-                <PaginationProducts page={page} setPage={setPage} />
-                <Products products={products} isLoading={isLoading} />
+                <PaginationProducts page={page} setPage={setPage} count={toPagesCount(products)} />
+                <Products products={products} currentPage={page} />
             </Box>
         </Box >
     )

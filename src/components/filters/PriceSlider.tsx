@@ -1,24 +1,30 @@
 import React from 'react'
-import { Box, Typography, Slider, Button } from '@mui/material'
+import { Box, Typography, Slider } from '@mui/material'
 
 interface IPriceSlider {
-    maxPrice: number,
+    maxPrice: number
+    setActivePrice: React.Dispatch<React.SetStateAction<number[]>>
 }
 
-export const PriceSlider: React.FC<IPriceSlider> = ({ maxPrice }) => {
+export const PriceSlider: React.FC<IPriceSlider> = ({ maxPrice, setActivePrice }) => {
+    const minDistance = +(maxPrice / 50).toFixed(0)
     const [price, setPrice] = React.useState<number[]>([0, maxPrice])
 
-    const minDistance = +(maxPrice / 50).toFixed(0)
     const handleChange = (event: Event, newValue: number | number[], activeThumb: number) => {
-        if (!Array.isArray(newValue)) {
-            return;
-        }
+        if (!Array.isArray(newValue)) return;
         if (activeThumb === 0) {
-            setPrice([Math.min(newValue[0], price[1] - minDistance), price[1]]);
+            setPrice((prevValue) => [Math.min(newValue[0], prevValue[1] - minDistance), prevValue[1]]);
         } else {
-            setPrice([price[0], Math.max(newValue[1], price[0] + minDistance)]);
+            setPrice((prevValue) => [prevValue[0], Math.max(newValue[1], prevValue[0] + minDistance)]);
         }
     };
+
+    React.useEffect(() => {
+        const id = setTimeout(() => {
+            setActivePrice(price)
+        }, 500)
+        return () => clearTimeout(id)
+    }, [price])
 
     return (
         <Box>
@@ -35,8 +41,6 @@ export const PriceSlider: React.FC<IPriceSlider> = ({ maxPrice }) => {
                 max={maxPrice}
                 sx={{ marginBottom: '10px' }}
             />
-            <Button size='small' variant='contained'>Apply Changes</Button>
-
         </Box>
     )
 }

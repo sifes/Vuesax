@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Drawer, Divider, Button, IconButton } from '@mui/material'
-import { Category } from './Category'
+import Category from './Category'
 import { PriceSlider } from './PriceSlider'
 import { RatingFilter } from './Rating'
 import SortIcon from '@mui/icons-material/Sort';
@@ -14,9 +14,21 @@ interface FiltersProps {
 
 export const Filters: React.FC<FiltersProps> = ({ products, setProducts }) => {
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const [filters, setFilters] = React.useState({})
-    const [category, setCategory] = React.useState();
-    const [rating, setRating] = React.useState();
+    const maxPrice = toMaxPrice(products)
+    const [activeCategories, setActiveCategories] = React.useState<string[]>([]);
+    const [activePrice, setActivePrice] = React.useState<number[]>([0, maxPrice])
+    const [activeRating, setActiveRating] = React.useState<string[]>([]);
+
+    function onApplyChanges(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+        const filteredProducts = products.filter((product) => {
+            const isCategory = activeCategories.length === 0 || activeCategories.includes(product.category)
+            const isPrice = product.price >= activePrice[0] && product.price <= activePrice[1]
+            const isRating = activeRating.length === 0 || activeRating.includes(Math.ceil(product.rating).toString())
+            console.log(activeRating, Math.ceil(product.rating).toString())
+            return isCategory && isPrice && isRating
+        })
+        setProducts(filteredProducts)
+    }
 
     return (
         <>
@@ -26,16 +38,17 @@ export const Filters: React.FC<FiltersProps> = ({ products, setProducts }) => {
                 borderRadius: '8px',
                 bgcolor: 'secondary.main',
                 boxShadow: ' 0px 2px 8px 0px rgba(0, 0, 0, 0.14)',
-                padding: { sm: '25px 16px', md: '25px 32px' },
+                padding: { sm: '25px 12px', md: '25px 32px' },
                 flex: '0 1 auto',
                 maxWidth: { sm: '180px', md: '370px' },
                 gap: '20px',
             }}>
-                <Category categories={toCategories(products)} />
+                <Category setActiveCategories={setActiveCategories} categories={toCategories(products)} />
                 <Divider color='#D6D6D6' />
-                <PriceSlider maxPrice={toMaxPrice(products)} />
+                <PriceSlider setActivePrice={setActivePrice} maxPrice={maxPrice} />
                 <Divider color='#D6D6D6' />
-                <RatingFilter />
+                <RatingFilter setActiveRating={setActiveRating} />
+                <Button variant='contained' onClick={onApplyChanges} >Apply Changes</Button>
                 <Button variant='contained'>Clear All Filters</Button>
             </Box>
 
@@ -66,11 +79,11 @@ export const Filters: React.FC<FiltersProps> = ({ products, setProducts }) => {
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, background: 'background' },
                     }}>
                     <Box sx={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                        <Category categories={toCategories(products)} />
+                        <Category setActiveCategories={setActiveCategories} categories={toCategories(products)} />
                         <Divider color='#D6D6D6' />
-                        <PriceSlider maxPrice={toMaxPrice(products)} />
+                        <PriceSlider setActivePrice={setActivePrice} maxPrice={maxPrice} />
                         <Divider color='#D6D6D6' />
-                        <RatingFilter />
+                        <RatingFilter setActiveRating={setActiveRating} />
                         <Button variant='contained'>Clear All Filters</Button>
                     </Box>
                 </Drawer>
