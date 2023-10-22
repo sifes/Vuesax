@@ -6,7 +6,6 @@ const StyledLink = styled(Link)(({ theme }) => ({
     color: theme.palette.primary.main,
     display: 'flex',
     alignItems: 'center',
-    flex: '1 1 auto',
 }));
 
 export const Logo = () => {

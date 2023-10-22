@@ -32,7 +32,7 @@ export function Header() {
     return (
         <Box sx={{ display: 'flex' }}>
             <AppBar component="nav" color='secondary' position='static'>
-                <Toolbar >
+                <Toolbar sx={{ alignItems: 'center', justifyContent: 'space-between' }} >
                     <Logo />
                     <IconButton
                         onClick={handleDrawerToggle}

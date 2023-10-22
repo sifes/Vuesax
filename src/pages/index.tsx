@@ -1,4 +1,4 @@
-import { Box, Card, CardMedia, Typography, styled } from "@mui/material";
+import { Box, Typography, styled } from "@mui/material";
 
 const BackgroundImage = styled(Box)(({ theme }) => ({
   width: '491px',
