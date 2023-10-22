@@ -1,78 +1,61 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import SearchIcon from '@mui/icons-material/Search';
-interface Film {
-    title: string;
-    year: number;
+import { IProduct } from '@/pages/products';
+import { Popper } from '@mui/material';
+interface SearchProductsProps {
+    products: IProduct[]
 }
 
 
-export function SearchProducts() {
-    const [open, setOpen] = React.useState(false);
-    const [options, setOptions] = React.useState<readonly Film[]>([]);
-    const loading = open && options.length === 0;
+
+export const SearchProducts: React.FC<SearchProductsProps> = ({ products }) => {
+    const [options, setOptions] = React.useState<IProduct[]>(products);
 
     React.useEffect(() => {
-        let active = true;
+        setOptions(products);
+    }, [products]);
 
-        if (!loading) {
-            return undefined;
-        }
-
-        (async () => {
-            if (active) {
-                setOptions([...[]]);
-            }
-        })();
-
-        return () => {
-            active = false;
-        };
-    }, [loading]);
-
-    React.useEffect(() => {
-        if (!open) {
-            setOptions([]);
-        }
-    }, [open]);
 
     return (
         <Autocomplete
             id="search-products"
-            sx={{
-                width: '100%',
-                bgcolor: '#0F1642',
-                borderRadius: '8px',
-                boxShadow: '0px 2px 8px 0px rgba(0, 0, 0, 0.14)',
-            }}
-            filterOptions={(x) => x}
-            open={open}
-            onOpen={() => setOpen(true)}
-            onClose={() => setOpen(false)}
-            isOptionEqualToValue={(option, value) => option.title === value.title}
-            getOptionLabel={(option) => option.title}
             options={options}
-            loading={loading}
-            renderInput={(params) => (
-                <>
-                    {/* Box sx={{ display: 'flex', justifyContent: 'space-between' }} */}
-                    <TextField
-                        {...params}
-                        placeholder='Search here'
-                        InputProps={{
-                            ...params.InputProps,
-                            endAdornment: (
-                                <>
-                                    <SearchIcon sx={{ margin: '0 -20px 0 0 ' }}></SearchIcon>
-                                </>
-                            ),
-                        }}
-                    />
-                </>
-            )}
+            groupBy={(option) => option.category}
+            disableClearable
+            clearOnEscape={false}
+            getOptionLabel={(option) => option.title}
+            sx={{
+                bgcolor: 'secondary.main',
+                borderRadius: '10px',
+                color: '#fff',
+                boxShadow: '0px 2px 8px 0px rgba(0, 0, 0, 0.14)',
+                '.Mui-focused': {
+                    color: '#fff',
+                    borderRadius: '10px',
+                },
+            }}
+            onChange={(event, value) => {
+                if (value) {
+                    window.location.href = `/products/${value.id}`
+                }
+            }}
+            renderInput={(params) => <TextField {...params} label="Search for a product" />}
+            PopperComponent={(params) => <Popper {...params} sx={{
+                '.MuiPaper-root': {
+                    bgcolor: 'secondary.main',
+                },
+                '.MuiAutocomplete-listbox': {
+                    bgcolor: 'secondary.main',
+                },
+                '.MuiAutocomplete-groupLabel': {
+                    position: 'relative',
+                    bgcolor: 'secondary.main',
+                    color: 'text.dark',
+                },
+            }} />}
+            fullWidth
         />
-    );
+    )
 }
-
 
