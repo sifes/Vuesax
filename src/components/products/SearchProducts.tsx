@@ -35,11 +35,7 @@ export const SearchProducts: React.FC<SearchProductsProps> = ({ products }) => {
                     borderRadius: '10px',
                 },
             }}
-            onChange={(event, value) => {
-                if (value) {
-                    window.location.href = `/products/${value.id}`
-                }
-            }}
+            onChange={(event, value) => value ? window.location.href = `/products/${value.id}` : null}
             renderInput={(params) => <TextField {...params} label="Search for a product" />}
             PopperComponent={(params) => <Popper {...params} sx={{
                 '.MuiPaper-root': {
