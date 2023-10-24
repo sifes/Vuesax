@@ -5,6 +5,7 @@ import { IProduct } from '.'
 import { CarouselProduct } from '@/ui/CarouselProduct'
 import { Box, Divider, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
 import Rating from '@mui/material/Rating';
+import { ImagesModal } from '@/ui/ImagesModal'
 
 
 interface ProductPageProps extends IProduct {
@@ -18,11 +19,12 @@ const ProductPage: React.FC<ProductPageProps> = ({ images, description, discount
             <Stack direction={{ xs: 'column', md: 'row' }} gap={{ xs: 2, md: 5 }} alignItems={'center'} >
                 <Box sx={{ flex: { md: '0 0 30%' }, height: '100%', maxWidth: '100%' }}>
                     <CarouselProduct images={images} />
+                    <ImagesModal images={images} />
                 </Box>
                 <Stack sx={{ flex: '1 1 auto', height: '100%' }} gap={3}>
                     <Typography variant='h2' fontWeight={600} >{title}</Typography>
                     <Stack direction={'row'} alignItems={'center'} gap={0.5} justifyContent={'space-between'}>
-                        <Stack direction={'row'} alignItems={'center'} gap={0.5}>
+                        <Stack direction={'row'} alignItems={'center'} gap={0.5} sx={{ bgcolor: 'primary.main', p: '8px 12px', borderRadius: '16px' }}>
                             <Typography variant='caption' sx={{ fontWeight: 700, fontSize: '20px', marginTop: '4px' }}>{rating}</Typography>
                             <Rating size='large' value={rating} readOnly precision={0.1} />
                         </Stack>

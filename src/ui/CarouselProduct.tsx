@@ -8,17 +8,6 @@ interface CarouselProductProps {
 }
 
 export const CarouselProduct: React.FC<CarouselProductProps> = ({ images }) => {
-    function onChange(index: number, item: React.ReactNode) {
-
-
-    }
-    function onClickItem() {
-
-    }
-    function onClickThumb() {
-
-    }
-
     return (
         <Carousel
             dynamicHeight
@@ -27,9 +16,7 @@ export const CarouselProduct: React.FC<CarouselProductProps> = ({ images }) => {
             width={'100%'}
             infiniteLoop
             showArrows
-            onChange={onChange}
-            onClickItem={onClickItem}
-            onClickThumb={onClickThumb}>
+        >
             {images.map(image => (
                 <Box sx={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '4px', overflow: 'hidden' }}>
                     <img src={image} alt='product image' />
