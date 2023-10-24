@@ -17,6 +17,9 @@ const theme = createTheme({
             secondary: '#2C2C20',
         },
     },
+    typography: {
+        fontFamily: 'Montserrat, sans-serif',
+    },
 },
 
 );
