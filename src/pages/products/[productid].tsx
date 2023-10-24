@@ -14,16 +14,19 @@ interface ProductPageProps extends IProduct {
 
 const ProductPage: React.FC<ProductPageProps> = ({ images, description, discountPercentage, id, price, rating, stock, thumbnail, title, ...info }) => {
     return (
-        <Box sx={{ maxWidth: '1540px', margin: '20px auto 20px', bgcolor: 'secondary.main', padding: '50px 60px', borderRadius: '12px', minHeight: '100vh' }} >
-            <Stack direction={{ xs: 'column', sm: 'row' }} gap={5} alignItems={'center'} >
-                <Box sx={{ flex: '0 0 30%', height: '100%' }}>
+        <Box sx={{ maxWidth: '1540px', margin: '20px auto 20px', bgcolor: 'secondary.main', padding: { md: '50px 60px', sm: '30px 40px', xs: '40px 20px', }, borderRadius: '12px', minHeight: '100vh' }} >
+            <Stack direction={{ xs: 'column', md: 'row' }} gap={{ xs: 2, md: 5 }} alignItems={'center'} >
+                <Box sx={{ flex: { md: '0 0 30%' }, height: '100%', maxWidth: '100%' }}>
                     <CarouselProduct images={images} />
                 </Box>
                 <Stack sx={{ flex: '1 1 auto', height: '100%' }} gap={3}>
-                    <Typography variant='h2'>{title}</Typography>
-                    <Stack direction={'row'} alignItems={'center'} gap={0.5}>
-                        <Typography variant='caption' sx={{ fontWeight: 700, fontSize: '20px', marginTop: '4px' }}>{rating}</Typography>
-                        <Rating size='large' value={rating} readOnly precision={0.1} />
+                    <Typography variant='h2' fontWeight={600} >{title}</Typography>
+                    <Stack direction={'row'} alignItems={'center'} gap={0.5} justifyContent={'space-between'}>
+                        <Stack direction={'row'} alignItems={'center'} gap={0.5}>
+                            <Typography variant='caption' sx={{ fontWeight: 700, fontSize: '20px', marginTop: '4px' }}>{rating}</Typography>
+                            <Rating size='large' value={rating} readOnly precision={0.1} />
+                        </Stack>
+                        <Typography variant='caption' sx={{ fontWeight: 300, fontSize: '14px' }}>id: {id}</Typography>
                     </Stack>
                     <Divider color='#6F64F8' />
                     <Stack direction={'row'} alignItems={'center'} >
