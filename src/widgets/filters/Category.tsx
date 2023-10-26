@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react'
 import { Box, Typography, FormGroup, FormControlLabel, Checkbox } from '@mui/material'
 import { CategoryProps } from '@/utils/types'
 
-const Category: React.FC<CategoryProps> = ({ setActiveCategories, categories }) => {
+const Category: React.FC<CategoryProps> = ({ activeCategories, setActiveCategories, categories }) => {
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.checked) {
             setActiveCategories((prevState) => [...prevState, e.target.value])
@@ -15,12 +15,11 @@ const Category: React.FC<CategoryProps> = ({ setActiveCategories, categories }) 
             <Typography variant='h6'>Category</Typography>
             <FormGroup sx={{ padding: '5px 0', gap: 1, marginBottom: '10px' }}>
                 {categories.map((category) => (
-                    <FormControlLabel key={category} control={<Checkbox value={category} onChange={onChange} />} label={category} />
+                    <FormControlLabel key={category} control={<Checkbox value={category} checked={activeCategories.includes(category)} onChange={onChange} />} label={category} />
                 ))}
             </FormGroup>
         </Box>
     )
 }
 
-const MemoizedMyComponent = React.memo(Category);
-export default MemoizedMyComponent;
+export default Category;

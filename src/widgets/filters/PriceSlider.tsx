@@ -1,14 +1,12 @@
 import React from 'react'
-import { Box, Typography, Slider } from '@mui/material'
+import { Box, Typography, Slider, Stack } from '@mui/material'
 import { PriceSliderProps } from '@/utils/types'
 
-
-
-export const PriceSlider: React.FC<PriceSliderProps> = ({ maxPrice, setActivePrice }) => {
+export const PriceSlider: React.FC<PriceSliderProps> = ({ activePrice, maxPrice, setActivePrice }) => {
     const minDistance = +(maxPrice / 50).toFixed(0)
     const [price, setPrice] = React.useState<number[]>([0, maxPrice])
 
-    const handleChange = (event: Event, newValue: number | number[], activeThumb: number) => {
+    const handleChange = (_event: Event, newValue: number | number[], activeThumb: number) => {
         if (!Array.isArray(newValue)) return;
         if (activeThumb === 0) {
             setPrice((prevValue) => [Math.min(newValue[0], prevValue[1] - minDistance), prevValue[1]]);
@@ -24,12 +22,18 @@ export const PriceSlider: React.FC<PriceSliderProps> = ({ maxPrice, setActivePri
         return () => clearTimeout(id)
     }, [price])
 
+    React.useEffect(() => {
+        if (activePrice[0] !== price[0] || activePrice[1] !== price[1]) {
+            setPrice(activePrice)
+        }
+    }, [activePrice])
+
     return (
         <Box>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Stack alignItems='center' justifyContent='space-between'>
                 <Typography variant='h6' >Price</Typography>
                 <Typography variant='caption' color={'GrayText'}>min:{price[0]} max:{price[1]}</Typography>
-            </Box>
+            </Stack>
             <Slider
                 disableSwap
                 value={price}
