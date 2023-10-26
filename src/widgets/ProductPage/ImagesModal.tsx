@@ -4,6 +4,7 @@ import Modal from '@mui/material/Modal';
 import { Box, Stack } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
 import { ImagesModalProps } from '@/utils/types';
+import { CarouselImageStyles, ModalImagesStyles } from './ui';
 
 
 export const ImagesModal: React.FC<ImagesModalProps> = ({ images }) => {
@@ -17,21 +18,7 @@ export const ImagesModal: React.FC<ImagesModalProps> = ({ images }) => {
                 open={open}
                 onClose={() => setOpen(false)}
             >
-                <Box sx={{
-                    position: 'absolute',
-                    left: '50%',
-                    transform: 'translate(-50%, 0)',
-                    margin: '20px 0',
-                    width: '80vw',
-                    bgcolor: '#2B3253',
-                    border: '2px solid #000',
-                    boxShadow: 24,
-                    borderRadius: '12px',
-                    p: 4,
-                    padding: { md: '32px !important', sm: '16px !important', xs: '8px !important' },
-                    overflowY: 'auto',
-                    maxHeight: '90vh'
-                }}>
+                <Box sx={ModalImagesStyles}>
                     <Carousel
                         dynamicHeight
                         centerMode
@@ -40,7 +27,7 @@ export const ImagesModal: React.FC<ImagesModalProps> = ({ images }) => {
                         showArrows
                     >
                         {images.map(image => (
-                            <Box key={image} sx={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '4px', overflow: 'hidden' }}>
+                            <Box key={image} sx={CarouselImageStyles}>
                                 <img src={image} alt='product image' />
                             </Box>
                         ))}

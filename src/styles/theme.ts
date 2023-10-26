@@ -20,6 +20,15 @@ const theme = createTheme({
     typography: {
         fontFamily: 'Montserrat, sans-serif',
     },
+    components: {
+        MuiDivider: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#6F64F8',
+                },
+            },
+        },
+    },
 },
 
 );

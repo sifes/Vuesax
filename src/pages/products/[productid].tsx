@@ -6,40 +6,33 @@ import { Box, Divider, List, ListItem, ListItemText, Stack, Typography } from '@
 import Rating from '@mui/material/Rating';
 import { ImagesModal } from '@/widgets/ProductPage/ImagesModal'
 import { OneProductPageProps } from '@/utils/types'
+import { CarouselWrapperStyles, EconomyStyles, OldPriceStyles, PriceStyles, ProductPageStyles, RatingStyles, RatingWrapperStyles } from '@/widgets/ProductPage/ui'
 
 const ProductPage: React.FC<OneProductPageProps> = ({ images, description, discountPercentage, id, price, rating, stock, thumbnail, title, ...info }) => {
     return (
-        <Box sx={{ maxWidth: '1540px', margin: '20px auto 20px', bgcolor: 'secondary.main', padding: { md: '50px 60px', sm: '30px 40px', xs: '40px 20px', }, borderRadius: '12px', minHeight: '100vh' }} >
+        <Box sx={ProductPageStyles} >
             <Stack direction={{ xs: 'column', md: 'row' }} gap={{ xs: 2, md: 5 }} alignItems={'center'} >
-                <Box sx={{ flex: { md: '0 0 30%' }, height: '100%', maxWidth: '100%' }}>
+                <Box sx={CarouselWrapperStyles}>
                     <CarouselProduct images={images} />
                     <ImagesModal images={images} />
                 </Box>
                 <Stack sx={{ flex: '1 1 auto', height: '100%' }} gap={3}>
                     <Typography variant='h2' fontWeight={600} >{title}</Typography>
                     <Stack direction={'row'} alignItems={'center'} gap={0.5} justifyContent={'space-between'}>
-                        <Stack direction={'row'} alignItems={'center'} gap={0.5} sx={{ bgcolor: 'primary.main', p: '8px 12px', borderRadius: '16px' }}>
-                            <Typography variant='caption' sx={{ fontWeight: 700, fontSize: '20px', marginTop: '4px' }}>{rating}</Typography>
+                        <Stack sx={RatingWrapperStyles}>
+                            <Typography variant='caption' sx={RatingStyles}>{rating}</Typography>
                             <Rating size='large' value={rating} readOnly precision={0.1} />
                         </Stack>
                         <Typography variant='caption' sx={{ fontWeight: 300, fontSize: '14px' }}>id: {id}</Typography>
                     </Stack>
-                    <Divider color='#6F64F8' />
+                    <Divider />
                     <Stack direction={'row'} alignItems={'center'} >
                         <Typography variant='h6' sx={{ opacity: 0.7 }}>Price: </Typography>
                         <Stack margin={'0 24px 0 12px'}>
-                            <Typography variant='subtitle1' sx={{ textDecoration: 'line-through', opacity: 0.7 }}>${(price + price * discountPercentage / 100).toFixed(0)}</Typography>
-                            <Typography variant='h5' sx={{ fontWeight: 600, marginLeft: '4px', marginTop: '-4px' }}>${price}</Typography>
+                            <Typography variant='subtitle1' sx={OldPriceStyles}>${(price + price * discountPercentage / 100).toFixed(0)}</Typography>
+                            <Typography variant='h5' sx={PriceStyles}>${price}</Typography>
                         </Stack>
-                        <Typography variant='body1' component={'div'} sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            bgcolor: "primary.main",
-                            color: "white",
-                            p: "10px 16px",
-                            borderRadius: 4
-                        }}>Economy {discountPercentage}%</Typography>
+                        <Typography variant='body1' component={'div'} sx={EconomyStyles}>Economy {discountPercentage}%</Typography>
                     </Stack>
                     <Typography variant='h5'>Availible in stock: {stock}</Typography>
                     <List >
@@ -59,7 +52,7 @@ const ProductPage: React.FC<OneProductPageProps> = ({ images, description, disco
                                 }} >{value}</ListItemText>
                             </ListItem>))}
                     </List>
-                    <Divider color='#6F64F8' />
+                    <Divider />
                     <Typography variant='caption'>About this item</Typography>
                     <Typography variant='h6'>{description}</Typography>
                 </Stack>

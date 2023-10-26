@@ -34,9 +34,9 @@ export const Filters: React.FC<FiltersProps> = ({ products, setProducts }) => {
         <>
             <FiltersWrapper>
                 <Category activeCategories={activeCategories} setActiveCategories={setActiveCategories} categories={toCategories(products)} />
-                <Divider color='#D6D6D6' />
+                <Divider />
                 <PriceSlider activePrice={activePrice} setActivePrice={setActivePrice} maxPrice={maxPrice} />
-                <Divider color='#D6D6D6' />
+                <Divider />
                 <RatingFilter activeRating={activeRating} setActiveRating={setActiveRating} />
                 <Button variant='contained' onClick={onApplyChanges} >Apply Changes</Button>
                 <Button variant='contained' onClick={onClearChanges}>Clear All Filters</Button>
@@ -60,9 +60,9 @@ export const Filters: React.FC<FiltersProps> = ({ products, setProducts }) => {
                     }}>
                     <Stack sx={{ padding: '24px', flexDirection: 'column', gap: '20px' }} >
                         <Category activeCategories={activeCategories} setActiveCategories={setActiveCategories} categories={toCategories(products)} />
-                        <Divider color='#D6D6D6' />
+                        <Divider />
                         <PriceSlider activePrice={activePrice} setActivePrice={setActivePrice} maxPrice={maxPrice} />
-                        <Divider color='#D6D6D6' />
+                        <Divider />
                         <RatingFilter activeRating={activeRating} setActiveRating={setActiveRating} />
                         <Button variant='contained' onClick={onApplyChanges}>Apply Changes</Button>
                         <Button variant='contained' onClick={onClearChanges}>Clear All Filters</Button>
