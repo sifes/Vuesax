@@ -50,7 +50,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ images, description, discount
                     <Typography variant='h5'>Availible in stock: {stock}</Typography>
                     <List >
                         {Object.entries(info).map(([key, value]) => (
-                            <ListItem sx={{ paddingLeft: 0 }}>
+                            <ListItem key={key} sx={{ paddingLeft: 0 }}>
                                 <ListItemText sx={{ flex: '0 0 130px' }} primaryTypographyProps={{
                                     fontWeight: 300,
                                     fontSize: '24px',

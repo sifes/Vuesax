@@ -4,6 +4,7 @@ import Modal from '@mui/material/Modal';
 import { Box, Stack, Typography } from '@mui/material';
 import { CarouselProduct } from './CarouselProduct';
 import { Carousel } from 'react-responsive-carousel';
+import Image from 'next/image';
 interface ImagesModalProps {
     images: string[]
 }
@@ -42,7 +43,7 @@ export const ImagesModal: React.FC<ImagesModalProps> = ({ images }) => {
                         showArrows
                     >
                         {images.map(image => (
-                            <Box sx={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '4px', overflow: 'hidden' }}>
+                            <Box key={image} sx={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '4px', overflow: 'hidden' }}>
                                 <img src={image} alt='product image' />
                             </Box>
                         ))}

@@ -18,7 +18,7 @@ export const CarouselProduct: React.FC<CarouselProductProps> = ({ images }) => {
             showArrows
         >
             {images.map(image => (
-                <Box sx={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '4px', overflow: 'hidden' }}>
+                <Box key={image} sx={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '4px', overflow: 'hidden' }}>
                     <img src={image} alt='product image' />
                 </Box>
             ))}

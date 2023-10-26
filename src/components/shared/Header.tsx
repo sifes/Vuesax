@@ -43,7 +43,6 @@ export function Header() {
                     </IconButton>
                     <Box sx={{ display: { xs: 'none', sm: 'flex', gap: 48 } }}>
                         <NavLink href='/' sx={{ color: '#fff', fontSize: 20 }}>Home</NavLink>
-                        <NavLink href='/contacts' sx={{ color: '#fff', fontSize: 20 }}>Contacts</NavLink>
                         <NavLink href='/products' sx={{ color: '#fff', fontSize: 20 }}>Products</NavLink>
                     </Box>
                 </Toolbar>
