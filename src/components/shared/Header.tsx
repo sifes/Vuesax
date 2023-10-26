@@ -13,7 +13,7 @@ import { Logo } from '@/ui/Logo';
 import Link from 'next/link';
 
 const NavLink = styled(Link)(({ theme }) => ({
-    color: theme.palette.primary.main,
+    color: '#0F1642',
     display: 'flex',
     alignItems: 'center',
     flex: '1 1 auto',
@@ -30,7 +30,7 @@ export function Header() {
         setMobileOpen((prevState) => !prevState);
     };
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', bgcolor: 'secondary.dark' }}>
             <AppBar component="nav" color='secondary' position='static'>
                 <Toolbar sx={{ alignItems: 'center', justifyContent: 'space-between' }} >
                     <Logo />
@@ -42,9 +42,9 @@ export function Header() {
                         <MenuIcon />
                     </IconButton>
                     <Box sx={{ display: { xs: 'none', sm: 'flex', gap: 48 } }}>
-                        <NavLink href='/' sx={{ color: 'text.main', fontSize: 24 }}>Home</NavLink>
-                        <NavLink href='/contacts' sx={{ color: 'text.main', fontSize: 24 }}>Contacts</NavLink>
-                        <NavLink href='/products' sx={{ color: 'text.main', fontSize: 24 }}>Products</NavLink>
+                        <NavLink href='/' sx={{ color: '#fff', fontSize: 20 }}>Home</NavLink>
+                        <NavLink href='/contacts' sx={{ color: '#fff', fontSize: 20 }}>Contacts</NavLink>
+                        <NavLink href='/products' sx={{ color: '#fff', fontSize: 20 }}>Products</NavLink>
                     </Box>
                 </Toolbar>
             </AppBar>

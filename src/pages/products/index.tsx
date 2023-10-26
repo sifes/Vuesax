@@ -50,6 +50,7 @@ const ProductsPage: React.FC<ProductPageProps> = ({ initialProducts }) => {
                 <SearchProducts products={products} />
                 <PaginationProducts page={page} setPage={setPage} count={toPagesCount(products)} />
                 <Products products={products} currentPage={page} />
+                <PaginationProducts page={page} setPage={setPage} count={toPagesCount(products)} />
             </ProductsWrapper>
         </ProductsPageWrapper>
     )
