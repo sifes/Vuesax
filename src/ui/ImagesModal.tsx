@@ -1,10 +1,8 @@
 import React from 'react'
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import { Box, Stack, Typography } from '@mui/material';
-import { CarouselProduct } from './CarouselProduct';
+import { Box, Stack } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
-import Image from 'next/image';
 interface ImagesModalProps {
     images: string[]
 }

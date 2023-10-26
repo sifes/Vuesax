@@ -29,7 +29,6 @@ export const Filters: React.FC<FiltersProps> = ({ products, setProducts }) => {
         })
         setProducts(filteredProducts)
     }
-
     return (
         <>
             <Box sx={{
@@ -51,7 +50,6 @@ export const Filters: React.FC<FiltersProps> = ({ products, setProducts }) => {
                 <Button variant='contained' onClick={onApplyChanges} >Apply Changes</Button>
                 <Button variant='contained'>Clear All Filters</Button>
             </Box>
-
 
             <Box sx={{
                 display: { sm: 'none', xs: 'flex' },
@@ -89,6 +87,5 @@ export const Filters: React.FC<FiltersProps> = ({ products, setProducts }) => {
                 </Drawer>
             </Box >
         </>
-
     )
 }

@@ -5,8 +5,6 @@ import { Drawer } from '@mui/material';
 import { IconButton } from '@mui/material';
 import { List } from '@mui/material';
 import { ListItem } from '@mui/material';
-import { ListItemButton } from '@mui/material';
-import { ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Toolbar } from '@mui/material';
 import { Logo } from '@/ui/Logo';

@@ -7,7 +7,6 @@ import React from 'react'
 import axios from 'axios';
 import { toPagesCount } from '@/utils/helpers'
 
-
 const ProductsPageWrapper = styled(Box)`
     display: flex;
     max-width: 1540px;
