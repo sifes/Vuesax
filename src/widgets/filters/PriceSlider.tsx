@@ -1,12 +1,10 @@
 import React from 'react'
 import { Box, Typography, Slider } from '@mui/material'
+import { PriceSliderProps } from '@/utils/types'
 
-interface IPriceSlider {
-    maxPrice: number
-    setActivePrice: React.Dispatch<React.SetStateAction<number[]>>
-}
 
-export const PriceSlider: React.FC<IPriceSlider> = ({ maxPrice, setActivePrice }) => {
+
+export const PriceSlider: React.FC<PriceSliderProps> = ({ maxPrice, setActivePrice }) => {
     const minDistance = +(maxPrice / 50).toFixed(0)
     const [price, setPrice] = React.useState<number[]>([0, maxPrice])
 

@@ -1,11 +1,8 @@
 import React, { ChangeEvent } from 'react'
 import { Box, Typography, FormGroup, FormControlLabel, Checkbox } from '@mui/material'
+import { CategoryProps } from '@/utils/types'
 
-interface ICategory {
-    categories: string[]
-    setActiveCategories: React.Dispatch<React.SetStateAction<string[]>>
-}
-const Category: React.FC<ICategory> = ({ setActiveCategories, categories }) => {
+const Category: React.FC<CategoryProps> = ({ setActiveCategories, categories }) => {
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.checked) {
             setActiveCategories((prevState) => [...prevState, e.target.value])

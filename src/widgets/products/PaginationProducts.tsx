@@ -1,11 +1,8 @@
 import React from 'react'
 import { Pagination, Stack } from '@mui/material'
-interface IPaginationProducts {
-    page: number;
-    setPage: React.Dispatch<React.SetStateAction<number>>
-    count: number
-}
-export const PaginationProducts: React.FC<IPaginationProducts> = ({ page, setPage, count }) => {
+import { PaginationProductsProps } from '@/utils/types';
+
+export const PaginationProducts: React.FC<PaginationProductsProps> = ({ page, setPage, count }) => {
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
     };

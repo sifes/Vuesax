@@ -1,10 +1,9 @@
+import { CarouselProductProps } from '@/utils/types';
 import { Box } from '@mui/material';
 import React from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-interface CarouselProductProps {
-    images: string[]
-}
+
 
 export const CarouselProduct: React.FC<CarouselProductProps> = ({ images }) => {
     return (

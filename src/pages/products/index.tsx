@@ -1,11 +1,12 @@
-import { Filters } from '@/components/filters/Filters'
-import { Products } from '@/components/products/Products'
-import { PaginationProducts } from '@/components/products/PaginationProducts'
-import { SearchProducts } from '@/components/products/SearchProducts'
+import { Filters } from '@/widgets/filters/Filters'
+import { Products } from '@/widgets/products/Products'
+import { PaginationProducts } from '@/widgets/products/PaginationProducts'
+import { SearchProducts } from '@/widgets/products/SearchProducts'
 import { Box, styled } from '@mui/material'
 import React from 'react'
 import axios from 'axios';
 import { toPagesCount } from '@/utils/helpers'
+import { ProductPageProps } from '@/utils/types'
 
 const ProductsPageWrapper = styled(Box)`
     display: flex;
@@ -18,27 +19,8 @@ const ProductsWrapper = styled(Box)`
     flex-direction: column;
     gap: 14px
 `;
-interface ProductPageProps {
-    initialProducts: IProduct[];
-}
-export interface IProduct {
-    brand: string
-    category: string
-    description: string
-    discountPercentage: number
-    id: number
-    images: string[]
-    price: number
-    rating: number
-    stock: number
-    thumbnail: string
-    title: string
-}
-export interface IFilters {
-    category: string
-    price: number
-    rating: number
-}
+
+
 const ProductsPage: React.FC<ProductPageProps> = ({ initialProducts }) => {
     const [products, setProducts] = React.useState(initialProducts)
     const [page, setPage] = React.useState(1)

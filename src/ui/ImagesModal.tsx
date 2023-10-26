@@ -3,9 +3,8 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { Box, Stack } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
-interface ImagesModalProps {
-    images: string[]
-}
+import { ImagesModalProps } from '@/utils/types';
+
 
 export const ImagesModal: React.FC<ImagesModalProps> = ({ images }) => {
     const [open, setOpen] = React.useState(false);

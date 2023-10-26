@@ -1,13 +1,10 @@
 import React from 'react'
 import { Grid, Card, CardContent, Typography, CardActions, Button, CardMedia, Box, Skeleton } from '@mui/material'
-import { IProduct } from '@/pages/products'
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-interface IProducts {
-    products: IProduct[]
-    currentPage: number
-}
-export const Products: React.FC<IProducts> = ({ products = [], currentPage }) => {
+import { ProductsProps } from '@/utils/types';
+
+export const Products: React.FC<ProductsProps> = ({ products = [], currentPage }) => {
     const [isLoading, setIsLoading] = React.useState(true)
     const [currentProducts, setCurrentProducts] = React.useState(products)
 

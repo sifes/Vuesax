@@ -1,11 +1,9 @@
 import React from 'react'
 import { Box, Typography, FormControlLabel, Rating, Radio, RadioGroup } from '@mui/material'
+import { RatingProps } from '@/utils/types'
 
-interface IRating {
-    setActiveRating: React.Dispatch<React.SetStateAction<string[]>>
-}
 
-export const RatingFilter: React.FC<IRating> = ({ setActiveRating }) => {
+export const RatingFilter: React.FC<RatingProps> = ({ setActiveRating }) => {
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.checked) {
             setActiveRating((prevState) => [...prevState, e.target.value])

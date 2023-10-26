@@ -4,13 +4,10 @@ import Category from './Category'
 import { PriceSlider } from './PriceSlider'
 import { RatingFilter } from './Rating'
 import SortIcon from '@mui/icons-material/Sort';
-import { IProduct } from '@/pages/products'
 import { toCategories, toMaxPrice } from '@/utils/helpers'
+import { FiltersProps } from '@/utils/types'
 
-interface FiltersProps {
-    products: IProduct[]
-    setProducts: React.Dispatch<React.SetStateAction<IProduct[]>>
-}
+
 
 export const Filters: React.FC<FiltersProps> = ({ products, setProducts }) => {
     const [mobileOpen, setMobileOpen] = React.useState(false);

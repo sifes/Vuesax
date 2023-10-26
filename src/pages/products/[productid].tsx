@@ -1,19 +1,13 @@
 import axios from 'axios'
 import { GetServerSideProps } from 'next'
 import React from 'react'
-import { IProduct } from '.'
 import { CarouselProduct } from '@/ui/CarouselProduct'
 import { Box, Divider, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
 import Rating from '@mui/material/Rating';
 import { ImagesModal } from '@/ui/ImagesModal'
+import { OneProductPageProps } from '@/utils/types'
 
-
-interface ProductPageProps extends IProduct {
-}
-
-
-
-const ProductPage: React.FC<ProductPageProps> = ({ images, description, discountPercentage, id, price, rating, stock, thumbnail, title, ...info }) => {
+const ProductPage: React.FC<OneProductPageProps> = ({ images, description, discountPercentage, id, price, rating, stock, thumbnail, title, ...info }) => {
     return (
         <Box sx={{ maxWidth: '1540px', margin: '20px auto 20px', bgcolor: 'secondary.main', padding: { md: '50px 60px', sm: '30px 40px', xs: '40px 20px', }, borderRadius: '12px', minHeight: '100vh' }} >
             <Stack direction={{ xs: 'column', md: 'row' }} gap={{ xs: 2, md: 5 }} alignItems={'center'} >
@@ -62,7 +56,12 @@ const ProductPage: React.FC<ProductPageProps> = ({ images, description, discount
                                     fontWeight: 500,
                                     fontSize: '24px',
                                     textTransform: 'capitalize',
-                                }}>{value}</ListItemText>
+                                }} >
+                                    {value}
+
+
+
+                                </ListItemText>
                             </ListItem>))}
                     </List>
                     <Divider color='#6F64F8' />
@@ -74,7 +73,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ images, description, discount
     )
 }
 
-export const getServerSideProps: GetServerSideProps<ProductPageProps> = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps<OneProductPageProps> = async ({ params }) => {
     const data = (await axios.get(`https://dummyjson.com/products/${params?.productid}`)).data
     return { props: { ...data } }
 }
