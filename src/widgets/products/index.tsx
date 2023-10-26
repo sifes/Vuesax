@@ -4,11 +4,11 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { ProductsProps } from '@/utils/types';
 import { OldPriceStyles, PriceWrapperStyles, ProductContentHeaderStyles, ProductContentInfoStyles, ProductContentStyles, ProductMediaStyles, ProductStyles, StarsWrapperStyles } from './ui';
+import Link from 'next/link';
 
 export const Products: React.FC<ProductsProps> = ({ products = [], currentPage }) => {
     const [isLoading, setIsLoading] = React.useState(true)
     const [currentProducts, setCurrentProducts] = React.useState(products)
-
     React.useEffect(() => {
         setCurrentProducts(products.slice(15 * (currentPage - 1), currentPage * 15))
         setIsLoading(false)
@@ -43,8 +43,10 @@ export const Products: React.FC<ProductsProps> = ({ products = [], currentPage }
                                     <Typography variant='subtitle2' sx={{ fontSize: '12px' }}>{category}</Typography>
                                 </Box>
                             </CardContent>
-                            <CardActions  >
-                                <Button fullWidth size="small" variant='contained' >Learn More <ArrowRightAltIcon></ArrowRightAltIcon></Button>
+                            <CardActions>
+                                <Link href={`/products/${id}`}>
+                                    <Button fullWidth size="small" variant='contained'>Learn More <ArrowRightAltIcon></ArrowRightAltIcon></Button>
+                                </Link>
                             </CardActions>
                         </Card>
                     </Grid>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppBar, styled } from '@mui/material';
+import { AppBar } from '@mui/material';
 import { Box } from '@mui/material';
 import { Drawer } from '@mui/material';
 import { IconButton } from '@mui/material';
@@ -7,19 +7,8 @@ import { List } from '@mui/material';
 import { ListItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Toolbar } from '@mui/material';
-import { Logo } from '@/widgets/shared/Logo';
-import Link from 'next/link';
-
-const NavLink = styled(Link)(({ theme }) => ({
-    color: '#0F1642',
-    display: 'flex',
-    alignItems: 'center',
-    flex: '1 1 auto',
-    textTransform: 'capitalize',
-    '&:hover': {
-        color: theme.palette.primary.dark,
-    },
-}));
+import { Logo } from '@/widgets/shared/ui/Logo';
+import { NavLink } from './ui';
 
 export function Header() {
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -40,8 +29,8 @@ export function Header() {
                         <MenuIcon />
                     </IconButton>
                     <Box sx={{ display: { xs: 'none', sm: 'flex', gap: 48 } }}>
-                        <NavLink href='/' sx={{ color: '#fff', fontSize: 20 }}>Home</NavLink>
-                        <NavLink href='/products' sx={{ color: '#fff', fontSize: 20 }}>Products</NavLink>
+                        <NavLink href='/'>Home</NavLink>
+                        <NavLink href='/products'>Products</NavLink>
                     </Box>
                 </Toolbar>
             </AppBar>
@@ -56,14 +45,11 @@ export function Header() {
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, background: 'background' },
                     }}>
                     <List sx={{ padding: '30px' }}>
-                        <ListItem disablePadding>
-                            <NavLink href='/' sx={{ color: 'text.main', fontSize: 24 }}>Home</NavLink>
+                        <ListItem >
+                            <NavLink href='/'>Home</NavLink>
                         </ListItem>
-                        <ListItem disablePadding>
-                            <NavLink href='/contacts' sx={{ color: 'text.main', fontSize: 24 }}>Contacts</NavLink>
-                        </ListItem>
-                        <ListItem disablePadding>
-                            <NavLink href='/products' sx={{ color: 'text.main', fontSize: 24 }}>Products</NavLink>
+                        <ListItem>
+                            <NavLink href='/products'>Products</NavLink>
                         </ListItem>
                     </List>
                 </Drawer>

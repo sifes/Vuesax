@@ -50,7 +50,7 @@ export const RatingWrapperStyles = {
     bgcolor: 'primary.main',
     p: '8px 12px',
     borderRadius: '16px',
-    direction: 'row',
+    flexDirection: 'row',
     alignItems: 'center',
     gap: 0.5
 }
