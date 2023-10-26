@@ -1,8 +1,9 @@
 import React from 'react'
-import { Grid, Card, CardContent, Typography, CardActions, Button, CardMedia, Box, Skeleton } from '@mui/material'
+import { Grid, Card, CardContent, Typography, CardActions, Button, CardMedia, Box, Skeleton, Stack } from '@mui/material'
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { ProductsProps } from '@/utils/types';
+import { OldPriceStyles, PriceWrapperStyles, ProductContentHeaderStyles, ProductContentInfoStyles, ProductContentStyles, ProductMediaStyles, ProductStyles, StarsWrapperStyles } from './ui';
 
 export const Products: React.FC<ProductsProps> = ({ products = [], currentPage }) => {
     const [isLoading, setIsLoading] = React.useState(true)
@@ -23,27 +24,27 @@ export const Products: React.FC<ProductsProps> = ({ products = [], currentPage }
                 :
                 currentProducts.map(({ title, thumbnail, id, category, brand, price, discountPercentage, rating }) => (
                     <Grid key={id} item xl={4} md={4} xs={12} sm={6} sx={{ maxWidth: '369px' }}  >
-                        <Card sx={{ bgcolor: 'secondary.main', height: 1, display: 'flex', flexDirection: 'column' }} key={id}>
-                            <CardMedia sx={{ height: 0, paddingTop: '80%' }} image={thumbnail} title={title} />
-                            <CardContent sx={{ padding: '12px', flex: '1 1 auto', display: 'flex', flexDirection: 'column' }}>
-                                <Box sx={{ display: 'flex', gap: '10px', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
-                                    <Box sx={{ bgcolor: '#6F64F8', borderRadius: '3px', display: 'flex', alignItems: 'center', padding: '6px', gap: '3px' }}>
+                        <Card sx={ProductStyles} key={id}>
+                            <CardMedia sx={ProductMediaStyles} image={thumbnail} title={title} />
+                            <CardContent sx={ProductContentStyles}>
+                                <Box sx={ProductContentHeaderStyles}>
+                                    <Box sx={StarsWrapperStyles}>
                                         {rating.toFixed(1)}
                                         <StarBorderIcon sx={{ color: '#fff' }} />
                                     </Box>
-                                    <Box sx={{ display: 'flex', gap: '6px', alignItems: 'center', mb: 1 }}>
+                                    <Box sx={PriceWrapperStyles}>
                                         <Typography variant='subtitle1' sx={{ fontWeight: 600 }}  >${price}</Typography>
-                                        <Typography sx={{ textDecoration: 'line-through', fontWeight: 300, fontSize: '10px', opacity: 0.6 }} variant='body2'>${(price + price * discountPercentage / 100).toFixed(0)}</Typography>
+                                        <Typography sx={OldPriceStyles} variant='body2'>${(price + price * discountPercentage / 100).toFixed(0)}</Typography>
                                     </Box>
                                 </Box>
                                 <Typography sx={{ mb: '8px', flex: '1 1 auto' }} variant='h6'>{title}</Typography>
-                                <Box sx={{ display: 'flex', gap: '10px', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <Box sx={ProductContentInfoStyles}>
                                     <Typography variant='subtitle2' sx={{ fontWeight: 300, fontSize: '12px' }}>{brand}</Typography>
                                     <Typography variant='subtitle2' sx={{ fontSize: '12px' }}>{category}</Typography>
                                 </Box>
                             </CardContent>
                             <CardActions  >
-                                <Button sx={{ width: 1 }} size="small" variant='contained' >Learn More <ArrowRightAltIcon></ArrowRightAltIcon></Button>
+                                <Button fullWidth size="small" variant='contained' >Learn More <ArrowRightAltIcon></ArrowRightAltIcon></Button>
                             </CardActions>
                         </Card>
                     </Grid>

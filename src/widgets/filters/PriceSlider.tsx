@@ -30,7 +30,7 @@ export const PriceSlider: React.FC<PriceSliderProps> = ({ activePrice, maxPrice,
 
     return (
         <Box>
-            <Stack alignItems='center' justifyContent='space-between'>
+            <Stack alignItems='center' justifyContent='space-between' flexDirection={'row'}>
                 <Typography variant='h6' >Price</Typography>
                 <Typography variant='caption' color={'GrayText'}>min:{price[0]} max:{price[1]}</Typography>
             </Stack>

@@ -17,7 +17,7 @@ export interface IFilters {
     price: number
     rating: number
 }
-export interface ProductPageProps {
+export interface ProductsPageProps {
     initialProducts: IProduct[];
 }
 export interface ImagesModalProps {
@@ -29,17 +29,20 @@ export interface CarouselProductProps {
 export interface CategoryProps {
     categories: string[]
     setActiveCategories: React.Dispatch<React.SetStateAction<string[]>>
+    activeCategories: string[]
 }
 export interface FiltersProps {
     products: IProduct[]
     setProducts: React.Dispatch<React.SetStateAction<IProduct[]>>
 }
 export interface PriceSliderProps {
+    activePrice: number[]
     maxPrice: number
     setActivePrice: React.Dispatch<React.SetStateAction<number[]>>
 }
 export interface RatingProps {
     setActiveRating: React.Dispatch<React.SetStateAction<string[]>>
+    activeRating: string[]
 }
 export interface PaginationProductsProps {
     page: number;
@@ -51,4 +54,7 @@ export interface ProductsProps {
     currentPage: number
 }
 export interface OneProductPageProps extends IProduct {
+}
+export interface SearchProductsProps {
+    products: IProduct[]
 }

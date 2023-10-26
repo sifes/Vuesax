@@ -1,4 +1,4 @@
-import { IProduct } from "@/pages/products"
+import { IProduct } from "./types"
 
 export function toCategories(arr: IProduct[]): string[] {
     const categories = arr.map((product: IProduct) => product.category)

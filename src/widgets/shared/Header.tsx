@@ -7,7 +7,7 @@ import { List } from '@mui/material';
 import { ListItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Toolbar } from '@mui/material';
-import { Logo } from '@/ui/Logo';
+import { Logo } from '@/widgets/shared/Logo';
 import Link from 'next/link';
 
 const NavLink = styled(Link)(({ theme }) => ({

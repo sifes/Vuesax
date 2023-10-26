@@ -1,31 +1,19 @@
-import { Filters } from '@/widgets/filters/Filters'
-import { Products } from '@/widgets/products/Products'
-import { PaginationProducts } from '@/widgets/products/PaginationProducts'
-import { SearchProducts } from '@/widgets/products/SearchProducts'
-import { Box, styled } from '@mui/material'
+import { Filters } from '@/widgets/Filters'
+import { Products } from '@/widgets/Products'
+import { PaginationProducts } from '@/widgets/Products/PaginationProducts'
+import { SearchProducts } from '@/widgets/Products/SearchProducts'
 import React from 'react'
 import axios from 'axios';
 import { toPagesCount } from '@/utils/helpers'
-import { ProductPageProps } from '@/utils/types'
+import { ProductsPageProps } from '@/utils/types'
+import { GetServerSideProps } from 'next'
+import { ProductsPageWrapper, ProductsWrapper } from '@/widgets/Products/ui'
 
-const ProductsPageWrapper = styled(Box)`
-    display: flex;
-    max-width: 1540px;
-    margin: 0 auto;
-`;
-const ProductsWrapper = styled(Box)`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 14px
-`;
-
-
-const ProductsPage: React.FC<ProductPageProps> = ({ initialProducts }) => {
+const ProductsPage: React.FC<ProductsPageProps> = ({ initialProducts }) => {
     const [products, setProducts] = React.useState(initialProducts)
     const [page, setPage] = React.useState(1)
     return (
-        <ProductsPageWrapper sx={{ flexDirection: { sm: 'row', xs: 'column' }, gap: { md: '30px', xs: '16px' }, padding: { lg: '25px 32px', xs: '20px 12px' } }} >
+        <ProductsPageWrapper >
             <Filters products={initialProducts} setProducts={setProducts} />
             <ProductsWrapper>
                 <SearchProducts products={products} />
@@ -39,7 +27,7 @@ const ProductsPage: React.FC<ProductPageProps> = ({ initialProducts }) => {
 
 export default ProductsPage
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps<ProductsPageProps> = async () => {
     const data = (await axios.get(`https://dummyjson.com/products?limit=100`)).data
     return { props: { initialProducts: data.products } }
 }

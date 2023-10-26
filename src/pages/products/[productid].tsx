@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { GetServerSideProps } from 'next'
 import React from 'react'
-import { CarouselProduct } from '@/ui/CarouselProduct'
+import { CarouselProduct } from '@/widgets/ProductPage/CarouselProduct'
 import { Box, Divider, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
 import Rating from '@mui/material/Rating';
-import { ImagesModal } from '@/ui/ImagesModal'
+import { ImagesModal } from '@/widgets/ProductPage/ImagesModal'
 import { OneProductPageProps } from '@/utils/types'
 
 const ProductPage: React.FC<OneProductPageProps> = ({ images, description, discountPercentage, id, price, rating, stock, thumbnail, title, ...info }) => {
@@ -56,12 +56,7 @@ const ProductPage: React.FC<OneProductPageProps> = ({ images, description, disco
                                     fontWeight: 500,
                                     fontSize: '24px',
                                     textTransform: 'capitalize',
-                                }} >
-                                    {value}
-
-
-
-                                </ListItemText>
+                                }} >{value}</ListItemText>
                             </ListItem>))}
                     </List>
                     <Divider color='#6F64F8' />
