@@ -1,18 +1,21 @@
 import React from 'react'
-import { Grid, Card, CardContent, Typography, CardActions, Button, CardMedia, Box, Skeleton, Stack } from '@mui/material'
+import { Grid, Card, CardContent, Typography, CardActions, Button, CardMedia, Box, Skeleton } from '@mui/material'
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { ProductsProps } from '@/utils/types';
 import { OldPriceStyles, PriceWrapperStyles, ProductContentHeaderStyles, ProductContentInfoStyles, ProductContentStyles, ProductMediaStyles, ProductStyles, StarsWrapperStyles } from './ui';
 import Link from 'next/link';
 
-export const Products: React.FC<ProductsProps> = ({ products = [], currentPage }) => {
-    const [isLoading, setIsLoading] = React.useState(true)
+export const Products: React.FC<ProductsProps> = ({ products, page }) => {
+    const [isLoading, setIsLoading] = React.useState(!products)
     const [currentProducts, setCurrentProducts] = React.useState(products)
+    const currentPage = localStorage.getItem('currentPage') ? Number(localStorage.getItem('currentPage')) : page
+
     React.useEffect(() => {
         setCurrentProducts(products.slice(15 * (currentPage - 1), currentPage * 15))
         setIsLoading(false)
     }, [currentPage, products])
+
     return (
         <Grid container spacing={{ md: 4, xs: 2 }} justifyContent={'center'} >
             {isLoading ?
@@ -53,6 +56,5 @@ export const Products: React.FC<ProductsProps> = ({ products = [], currentPage }
                 ))
             }
         </Grid>
-
     )
 }
