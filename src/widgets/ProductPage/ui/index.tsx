@@ -2,10 +2,11 @@ export const ProductPageStyles = {
     maxWidth: '1540px',
     margin: '20px auto 20px',
     bgcolor: 'secondary.main',
+    position: 'relative',
     padding: {
-        md: '50px 60px',
-        sm: '30px 40px',
-        xs: '40px 20px',
+        md: '40px 60px',
+        sm: '70px 30px',
+        xs: '70px 20px',
     },
     borderRadius: '12px',
     minHeight: '100vh'
@@ -38,7 +39,10 @@ export const EconomyStyles = {
     justifyContent: "center",
     bgcolor: "primary.main",
     color: "white",
-    p: "10px 16px",
+    p: {
+        md: "10px 14px",
+        xs: '8px 8px'
+    },
     borderRadius: 4
 }
 export const CarouselWrapperStyles = {
@@ -48,7 +52,10 @@ export const CarouselWrapperStyles = {
 }
 export const RatingWrapperStyles = {
     bgcolor: 'primary.main',
-    p: '8px 12px',
+    p: {
+        md: '8px 12px',
+        xs: '4px 8px'
+    },
     borderRadius: '16px',
     flexDirection: 'row',
     alignItems: 'center',
@@ -57,7 +64,10 @@ export const RatingWrapperStyles = {
 
 export const RatingStyles = {
     fontWeight: 700,
-    fontSize: '20px',
+    fontSize: {
+        md: '24px',
+        xs: '18px'
+    },
     marginTop: '4px'
 }
 export const OldPriceStyles = {

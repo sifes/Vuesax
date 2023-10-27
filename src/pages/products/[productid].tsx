@@ -2,12 +2,13 @@ import axios from 'axios'
 import { GetServerSideProps } from 'next'
 import React from 'react'
 import { CarouselProduct } from '@/widgets/ProductPage/CarouselProduct'
-import { Box, Divider, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
+import { Box, Divider, IconButton, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
 import Rating from '@mui/material/Rating';
 import { ImagesModal } from '@/widgets/ProductPage/ImagesModal'
 import { OneProductPageProps } from '@/utils/types'
 import { CarouselWrapperStyles, EconomyStyles, OldPriceStyles, PriceStyles, ProductPageStyles, RatingStyles, RatingWrapperStyles } from '@/widgets/ProductPage/ui'
-
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Link from 'next/link'
 const ProductPage: React.FC<OneProductPageProps> = ({ images, description, discountPercentage, id, price, rating, stock, thumbnail, title, ...info }) => {
     return (
         <Box sx={ProductPageStyles} >
@@ -17,7 +18,7 @@ const ProductPage: React.FC<OneProductPageProps> = ({ images, description, disco
                     <ImagesModal images={images} />
                 </Box>
                 <Stack sx={{ flex: '1 1 auto', height: '100%' }} gap={3}>
-                    <Typography variant='h2' fontWeight={600} >{title}</Typography>
+                    <Typography variant='h2' fontWeight={600} fontSize={{ md: '3.75rem', xs: '2.5rem' }} >{title}</Typography>
                     <Stack direction={'row'} alignItems={'center'} gap={0.5} justifyContent={'space-between'}>
                         <Stack sx={RatingWrapperStyles}>
                             <Typography variant='caption' sx={RatingStyles}>{rating}</Typography>
@@ -57,6 +58,9 @@ const ProductPage: React.FC<OneProductPageProps> = ({ images, description, disco
                     <Typography variant='h6'>{description}</Typography>
                 </Stack>
             </Stack>
+            <Link href={'/products'}>
+                <IconButton sx={{ position: 'absolute', top: '12px', right: '12px' }} size='large'  ><ArrowBackIcon color='primary' /></IconButton>
+            </Link>
         </Box>
     )
 }

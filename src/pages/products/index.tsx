@@ -18,7 +18,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ initialProducts }) => {
             <ProductsWrapper>
                 <SearchProducts products={products} />
                 <PaginationProducts page={page} setPage={setPage} count={toPagesCount(products)} />
-                <Products products={products} currentPage={page} />
+                <Products products={products} page={page} />
                 <PaginationProducts page={page} setPage={setPage} count={toPagesCount(products)} />
             </ProductsWrapper>
         </ProductsPageWrapper>
@@ -28,6 +28,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ initialProducts }) => {
 export default ProductsPage
 
 export const getServerSideProps: GetServerSideProps<ProductsPageProps> = async () => {
-    const data = (await axios.get(`https://dummyjson.com/products?limit=100`)).data
+    const response = (await axios.get(`https://dummyjson.com/products?limit=100`))
+    const data = response.data
     return { props: { initialProducts: data.products } }
 }

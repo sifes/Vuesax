@@ -19,13 +19,10 @@ export const ProductsPageWrapper = styled(Stack)(({ theme }) => ({
         padding: '25px 32px',
     },
 }));
-export const ProductsWrapper = styled(Stack)(({ theme }) => ({
+export const ProductsWrapper = styled(Stack)(() => ({
     width: '100%',
     flexDirection: 'column',
     gap: '16px',
-    [theme.breakpoints.up('md')]: {
-        gap: '30px',
-    },
 }));
 export const ProductStyles = {
     display: 'flex',

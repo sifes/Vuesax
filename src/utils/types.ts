@@ -41,8 +41,8 @@ export interface PriceSliderProps {
     setActivePrice: React.Dispatch<React.SetStateAction<number[]>>
 }
 export interface RatingProps {
-    setActiveRating: React.Dispatch<React.SetStateAction<string[]>>
-    activeRating: string[]
+    activeRating: number
+    setActiveRating: React.Dispatch<React.SetStateAction<number>>
 }
 export interface PaginationProductsProps {
     page: number;
@@ -51,7 +51,7 @@ export interface PaginationProductsProps {
 }
 export interface ProductsProps {
     products: IProduct[]
-    currentPage: number
+    page: number
 }
 export interface OneProductPageProps extends IProduct {
 }
