@@ -31,4 +31,38 @@ export const FiltersMobileWrapper = styled(Box)(({ theme }) => ({
         display: 'none',
     },
 }));
+export const FormGroupStyles = {
+    padding: '5px 0',
+    gap: 1,
+    marginBottom: '10px'
+}
+export const RatingTextStyles = {
+    opacity: 0.6,
+    marginTop: '2px',
+    display: {
+        sm: 'none',
+        md: 'block'
+    }
+}
+export const FiltersIconStyles = {
+    display: { sm: 'none' },
+    gap: '10px',
+    fontSize: 32,
+}
+export const ModalFiltersStyles = {
+    padding: '24px',
+    flexDirection: 'column',
+    gap: '20px'
+}
+export const ModalContentStyles = {
+    display: {
+        xs: 'block',
+        sm: 'none'
+    },
+    '& .MuiDrawer-paper': {
+        boxSizing: 'border-box',
+        width: 240,
+        background: 'background'
+    },
+}
 

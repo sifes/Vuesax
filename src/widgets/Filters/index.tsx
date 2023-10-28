@@ -6,7 +6,7 @@ import { RatingFilter } from './Rating'
 import SortIcon from '@mui/icons-material/Sort';
 import { toCategories, toMaxPrice } from '@/utils/helpers'
 import { FiltersProps } from '@/utils/types'
-import { FiltersMobileWrapper, FiltersWrapper } from './ui'
+import { FiltersIconStyles, FiltersMobileWrapper, FiltersWrapper, ModalContentStyles, ModalFiltersStyles } from './ui'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
 
 export const Filters: React.FC<FiltersProps> = ({ products, setProducts }) => {
@@ -47,7 +47,7 @@ export const Filters: React.FC<FiltersProps> = ({ products, setProducts }) => {
 
             <FiltersMobileWrapper>
                 <IconButton onClick={() => setMobileOpen((prevState) => !prevState)}
-                    sx={{ display: { sm: 'none' }, gap: '10px', fontSize: 32, }} color='primary'>
+                    sx={FiltersIconStyles} color='primary'>
                     Filters
                     <SortIcon />
                 </IconButton>
@@ -56,12 +56,9 @@ export const Filters: React.FC<FiltersProps> = ({ products, setProducts }) => {
                     open={mobileOpen}
                     anchor='right'
                     onClose={() => setMobileOpen((prevState) => !prevState)}
-                    ModalProps={{ keepMounted: true, }}
-                    sx={{
-                        display: { xs: 'block', sm: 'none' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, background: 'background' },
-                    }}>
-                    <Stack sx={{ padding: '24px', flexDirection: 'column', gap: '20px' }} >
+                    ModalProps={{ keepMounted: true }}
+                    sx={ModalFiltersStyles}>
+                    <Stack sx={ModalContentStyles} >
                         <Category activeCategories={activeCategories} setActiveCategories={setActiveCategories} categories={toCategories(products)} />
                         <Divider />
                         <PriceSlider activePrice={activePrice} setActivePrice={setActivePrice} maxPrice={maxPrice} />

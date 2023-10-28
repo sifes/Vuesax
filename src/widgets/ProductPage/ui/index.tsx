@@ -79,3 +79,7 @@ export const PriceStyles = {
     marginLeft: '4px',
     marginTop: '-4px'
 }
+export const ButtonStyles = {
+    borderRadius: '12px',
+    margin: '0 auto'
+}

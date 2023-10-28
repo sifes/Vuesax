@@ -4,7 +4,7 @@ import Modal from '@mui/material/Modal';
 import { Box, Stack } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
 import { ImagesModalProps } from '@/utils/types';
-import { CarouselImageStyles, ModalImagesStyles } from './ui';
+import { ButtonStyles, CarouselImageStyles, ModalImagesStyles } from './ui';
 
 
 export const ImagesModal: React.FC<ImagesModalProps> = ({ images }) => {
@@ -12,9 +12,8 @@ export const ImagesModal: React.FC<ImagesModalProps> = ({ images }) => {
 
     return (
         <Stack>
-            <Button onClick={() => setOpen(true)} variant='contained' size='large' sx={{ borderRadius: '12px', margin: '0 auto' }}>See Closely</Button>
+            <Button onClick={() => setOpen(true)} variant='contained' size='large' sx={ButtonStyles}>See Closely</Button>
             <Modal
-                sx={{}}
                 open={open}
                 onClose={() => setOpen(false)}
             >

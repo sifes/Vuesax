@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Typography, Slider, Stack } from '@mui/material'
 import { PriceSliderProps } from '@/utils/types'
+import { FormGroupStyles } from './ui'
 
 export const PriceSlider: React.FC<PriceSliderProps> = ({ activePrice, maxPrice, setActivePrice }) => {
     const minDistance = +(maxPrice / 50).toFixed(0)
@@ -41,7 +42,7 @@ export const PriceSlider: React.FC<PriceSliderProps> = ({ activePrice, maxPrice,
                 valueLabelDisplay="auto"
                 min={0}
                 max={maxPrice}
-                sx={{ marginBottom: '10px' }}
+                sx={FormGroupStyles}
             />
         </Box>
     )
