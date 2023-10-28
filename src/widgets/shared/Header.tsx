@@ -8,7 +8,7 @@ import { ListItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Toolbar } from '@mui/material';
 import { Logo } from '@/widgets/shared/ui/Logo';
-import { NavLink } from './ui';
+import { HeaderDrawerStyles, HeaderIconStyles, HeaderLinksStyles, HeaderToolbarStyles, NavLink } from './ui';
 
 export function Header() {
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -19,16 +19,16 @@ export function Header() {
     return (
         <Box sx={{ display: 'flex', bgcolor: 'secondary.dark' }}>
             <AppBar component="nav" color='secondary' position='static'>
-                <Toolbar sx={{ alignItems: 'center', justifyContent: 'space-between' }} >
+                <Toolbar sx={HeaderToolbarStyles} >
                     <Logo />
                     <IconButton
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: 'none' } }}
+                        sx={HeaderIconStyles}
                         color='primary'
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Box sx={{ display: { xs: 'none', sm: 'flex', gap: 48 } }}>
+                    <Box sx={HeaderLinksStyles}>
                         <NavLink href='/'>Home</NavLink>
                         <NavLink href='/products'>Products</NavLink>
                     </Box>
@@ -40,11 +40,8 @@ export function Header() {
                     open={mobileOpen}
                     onClose={handleDrawerToggle}
                     ModalProps={{ keepMounted: true, }}
-                    sx={{
-                        display: { xs: 'block', sm: 'none' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, background: 'background' },
-                    }}>
-                    <List sx={{ padding: '30px' }}>
+                    sx={HeaderDrawerStyles}>
+                    <List >
                         <ListItem >
                             <NavLink href='/'>Home</NavLink>
                         </ListItem>

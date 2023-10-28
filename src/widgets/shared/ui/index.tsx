@@ -37,6 +37,7 @@ export const TitleStyles = {
     color: 'text.primary',
     fontSize: { md: '3.75rem', xs: '2.5rem' },
 }
+//// <--- Footer ---> ////
 export const FooterStyles = {
     width: '100%',
     padding: 0,
@@ -49,4 +50,39 @@ export const FooterContentStyles = {
     display: 'flex',
     alignItems: 'center',
     gap: 4
+}
+export const FooterIconStyles = {
+    width: 28,
+    height: 28
+}
+
+//// <--- Header ---> ////
+export const HeaderToolbarStyles = {
+    alignItems: 'center',
+    justifyContent: 'space-between'
+}
+
+export const HeaderIconStyles = {
+    mr: 2,
+    display: { sm: 'none' }
+}
+export const HeaderLinksStyles = {
+    display: {
+        xs: 'none',
+        sm: 'flex',
+    }
+}
+export const HeaderDrawerStyles = {
+    display: {
+        xs: 'block',
+        sm: 'none'
+    },
+    '& .MuiDrawer-paper': {
+        boxSizing: 'border-box',
+        width: 240,
+        background: 'background'
+    },
+    '& ul': {
+        padding: '30px',
+    },
 }
