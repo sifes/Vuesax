@@ -1,7 +1,7 @@
 import React from 'react'
 import { Pagination, Stack } from '@mui/material'
 import { PaginationProductsProps } from '@/utils/types';
-import { PaginationProductsStyles } from './ui';
+import { PaginationProductStyles, PaginationProductsStyles } from './ui';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 export const PaginationProducts: React.FC<PaginationProductsProps> = ({ count, setPage, page }) => {
@@ -11,9 +11,8 @@ export const PaginationProducts: React.FC<PaginationProductsProps> = ({ count, s
         setPage(value);
     };
     return (
-        <Stack spacing={2} sx={{ margin: '0 auto', width: '100%', }}>
-            <Pagination
-                sx={PaginationProductsStyles} count={count} page={currentPage} onChange={handleChange} />
+        <Stack spacing={2} sx={PaginationProductsStyles}>
+            <Pagination sx={PaginationProductStyles} count={count} page={currentPage} onChange={handleChange} />
         </Stack>
     )
 }
