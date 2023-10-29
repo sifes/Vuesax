@@ -9,7 +9,7 @@ export function Footer() {
     return (
         <Box sx={FooterStyles} component="footer"  >
             <Box sx={FooterContentStyles}>
-                <IconButton color='primary' href='https://t.me/notsifes' target="_blank" rel="noopener noreferrer">
+                <IconButton color='primary' href='https://t.me' target="_blank" rel="noopener noreferrer">
                     <TelegramIcon sx={FooterIconStyles} />
                 </IconButton>
                 <Logo />
