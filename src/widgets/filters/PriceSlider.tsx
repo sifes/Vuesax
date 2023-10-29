@@ -21,13 +21,13 @@ export const PriceSlider: React.FC<PriceSliderProps> = ({ activePrice, maxPrice,
             setActivePrice(price)
         }, 500)
         return () => clearTimeout(id)
-    }, [price])
+    }, [price, setActivePrice])
 
     React.useEffect(() => {
         if (activePrice[0] !== price[0] || activePrice[1] !== price[1]) {
             setPrice(activePrice)
         }
-    }, [activePrice])
+    }, [price, activePrice, setPrice])
 
     return (
         <Box>

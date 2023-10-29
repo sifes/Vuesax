@@ -9,13 +9,14 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import NoProductsIcon from '@mui/icons-material/ProductionQuantityLimits';
 export const Products: React.FC<ProductsProps> = ({ products, page }) => {
     const [currentProducts, setCurrentProducts] = React.useState(products)
-    const [currentPage, setCurrentPage] = useLocalStorage('currentPage', page)
+    const [storedPage] = useLocalStorage('currentPage', page)
 
     React.useEffect(() => {
-        setCurrentProducts(products.slice(15 * (currentPage - 1), currentPage * 15))
-        setCurrentPage(page)
-    }, [currentPage, products, page])
-
+        setCurrentProducts(products.slice(15 * (page - 1), page * 15))
+        return () => {
+            setCurrentProducts([])
+        }
+    }, [storedPage, products, page, setCurrentProducts])
 
     return (
         products.length === 0 ?

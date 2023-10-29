@@ -10,7 +10,7 @@ export const SearchProducts: React.FC<SearchProductsProps> = ({ products }) => {
 
     React.useEffect(() => {
         setOptions(products);
-    }, [products]);
+    }, [products, setOptions]);
 
     return (
         <Autocomplete
