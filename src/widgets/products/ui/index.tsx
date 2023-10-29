@@ -30,6 +30,17 @@ export const ProductStyles = {
     height: 1,
     flexDirection: 'column',
 };
+export const NoProductStyles = {
+    bgcolor: 'secondary.main',
+    height: '200px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: '10px',
+    gap: '10px',
+    padding: '10px',
+};
 //// </--- Products ---/> ////
 
 //// <--- Autocomplete ---> ////
@@ -81,7 +92,6 @@ export const PaginationProductsStyles = {
     margin: '0 auto',
     width: '100%',
 }
-
 //// </--- Pagination ---/> ////
 
 //// <--- Content ---> ////

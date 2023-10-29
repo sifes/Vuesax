@@ -55,8 +55,11 @@ export const ModalFiltersStyles = {
     gap: '20px'
 }
 export const ModalContentStyles = {
+    padding: '24px',
+    flexDirection: 'column',
+    gap: '20px',
+    background: 'background',
     display: {
-        xs: 'block',
         sm: 'none'
     },
     '& .MuiDrawer-paper': {
@@ -64,5 +67,6 @@ export const ModalContentStyles = {
         width: 240,
         background: 'background'
     },
+    maxWidth: '65vw',
 }
 

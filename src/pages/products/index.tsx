@@ -8,10 +8,11 @@ import { toPagesCount } from '@/utils/helpers'
 import { ProductsPageProps } from '@/utils/types'
 import { GetServerSideProps } from 'next'
 import { ProductsPageWrapper, ProductsWrapper } from '@/widgets/Products/ui'
+import { useLocalStorage } from '@/hooks/useLocalStorage'
 
 const ProductsPage: React.FC<ProductsPageProps> = ({ initialProducts }) => {
     const [products, setProducts] = React.useState(initialProducts)
-    const [page, setPage] = React.useState(1)
+    const [page, setPage] = React.useState(useLocalStorage('currentPage', 1)[0])
     return (
         <ProductsPageWrapper >
             <Filters products={initialProducts} setProducts={setProducts} />

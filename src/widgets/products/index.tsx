@@ -1,31 +1,31 @@
 import React from 'react'
-import { Grid, Card, CardContent, Typography, CardActions, Button, CardMedia, Box, Skeleton } from '@mui/material'
+import { Grid, Card, CardContent, Typography, CardActions, Button, CardMedia, Box } from '@mui/material'
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { ProductsProps } from '@/utils/types';
-import { BrandStyles, CategoryStyles, GridProductsStyles, GridSkeletonStyles, OldPriceStyles, PriceStyles, PriceWrapperStyles, ProductContentHeaderStyles, ProductContentInfoStyles, ProductContentStyles, ProductMediaStyles, ProductStyles, SkeletonStyles, StarsWrapperStyles, TitleStyles } from './ui';
+import { BrandStyles, CategoryStyles, GridProductsStyles, NoProductStyles, OldPriceStyles, PriceStyles, PriceWrapperStyles, ProductContentHeaderStyles, ProductContentInfoStyles, ProductContentStyles, ProductMediaStyles, ProductStyles, SkeletonStyles, StarsWrapperStyles, TitleStyles } from './ui';
 import Link from 'next/link';
-
+import { useLocalStorage } from '@/hooks/useLocalStorage';
+import NoProductsIcon from '@mui/icons-material/ProductionQuantityLimits';
 export const Products: React.FC<ProductsProps> = ({ products, page }) => {
-    const [isLoading, setIsLoading] = React.useState(!products)
     const [currentProducts, setCurrentProducts] = React.useState(products)
-    const currentPage = localStorage.getItem('currentPage') ? Number(localStorage.getItem('currentPage')) : page
+    const [currentPage, setCurrentPage] = useLocalStorage('currentPage', page)
 
     React.useEffect(() => {
         setCurrentProducts(products.slice(15 * (currentPage - 1), currentPage * 15))
-        setIsLoading(false)
-    }, [currentPage, products])
+        setCurrentPage(page)
+    }, [currentPage, products, page])
+
 
     return (
-        <Grid container spacing={{ md: 4, xs: 2 }} justifyContent={'center'} >
-            {isLoading ?
-                [1, 2, 3, 4, 5, 6].map((item) =>
-                (<Grid key={item} item xl={4} md={4} xs={12} sm={6} sx={GridSkeletonStyles}  >
-                    <Skeleton key={item} width={'100%'} sx={SkeletonStyles} >
-                    </Skeleton>
-                </Grid>))
-                :
-                currentProducts.map(({ title, thumbnail, id, category, brand, price, discountPercentage, rating }) => (
+        products.length === 0 ?
+            <Box sx={NoProductStyles} >
+                <Typography variant='h5'>No products has been found</Typography>
+                <NoProductsIcon fontSize='large' />
+            </Box>
+            :
+            <Grid container spacing={{ md: 4, xs: 2 }} justifyContent={'center'} >
+                {currentProducts.map(({ title, thumbnail, id, category, brand, price, discountPercentage, rating }) => (
                     <Grid key={id} item xl={4} md={4} xs={12} sm={6} sx={GridProductsStyles}  >
                         <Card sx={ProductStyles} key={id}>
                             <CardMedia sx={ProductMediaStyles} image={thumbnail} title={title} />
@@ -53,8 +53,14 @@ export const Products: React.FC<ProductsProps> = ({ products, page }) => {
                             </CardActions>
                         </Card>
                     </Grid>
-                ))
-            }
-        </Grid>
+                ))}
+            </Grid>
+
     )
 }
+
+
+{/* <Grid key={item} item xl={4} md={4} xs={12} sm={6} sx={GridSkeletonStyles}  >
+    <Skeleton key={item} width={'100%'} sx={SkeletonStyles} >
+    </Skeleton>
+</Grid> */}

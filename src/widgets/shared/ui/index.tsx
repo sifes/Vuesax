@@ -70,7 +70,8 @@ export const HeaderLinksStyles = {
     display: {
         xs: 'none',
         sm: 'flex',
-    }
+    },
+    gap: 4
 }
 export const HeaderDrawerStyles = {
     display: {

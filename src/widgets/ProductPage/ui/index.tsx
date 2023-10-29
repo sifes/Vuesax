@@ -16,14 +16,15 @@ export const CarouselImageStyles = {
     maxHeight: '100%',
     objectFit: 'contain',
     borderRadius: '4px',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    margin: '0 auto'
 }
 export const ModalImagesStyles = {
     position: 'absolute',
     left: '50%',
     transform: 'translate(-50%, 0)',
     margin: '20px 0',
-    width: '80vw',
+    width: '75vw',
     bgcolor: '#2B3253',
     border: '2px solid #000',
     boxShadow: 24,
@@ -31,7 +32,7 @@ export const ModalImagesStyles = {
     p: 4,
     padding: { md: '32px !important', sm: '16px !important', xs: '8px !important' },
     overflowY: 'auto',
-    maxHeight: '90vh'
+    maxHeight: '80vh'
 }
 export const EconomyStyles = {
     display: "flex",
@@ -48,7 +49,8 @@ export const EconomyStyles = {
 export const CarouselWrapperStyles = {
     flex: { md: '0 0 30%' },
     height: '100%',
-    maxWidth: '100%'
+    maxHeight: '500px',
+    maxWidth: '50%'
 }
 export const RatingWrapperStyles = {
     bgcolor: 'primary.main',
