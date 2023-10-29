@@ -11,3 +11,6 @@ export function toMaxPrice(arr: IProduct[]): number {
 export function toPagesCount(arr: IProduct[]): number {
     return Math.ceil(arr.length / 15)
 }
+export function toOldPrice(price: number, discountPercentage: number): string {
+    return (price + price * discountPercentage / 100).toFixed(0)
+}

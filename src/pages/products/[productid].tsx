@@ -6,9 +6,10 @@ import { Box, Divider, IconButton, List, ListItem, ListItemText, Stack, Typograp
 import Rating from '@mui/material/Rating';
 import { ImagesModal } from '@/widgets/ProductPage/ImagesModal'
 import { OneProductPageProps } from '@/utils/types'
-import { CarouselWrapperStyles, EconomyStyles, OldPriceStyles, PriceStyles, ProductPageStyles, RatingStyles, RatingWrapperStyles } from '@/widgets/ProductPage/ui'
+import { ArrowBackStyles, CarouselWrapperStyles, EconomyStyles, IdStyles, ListItemStyles, ListItemTextStyles, ListTextKeyStyles, ListTextValueStyles, OldPriceStyles, PriceStyles, ProductContentStyles, ProductPageStyles, RatingStyles, RatingWrapperStyles } from '@/widgets/ProductPage/ui'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Link from 'next/link'
+import { toOldPrice } from '@/utils/helpers'
 const ProductPage: React.FC<OneProductPageProps> = ({ images, description, discountPercentage, id, price, rating, stock, thumbnail, title, ...info }) => {
     return (
         <Box sx={ProductPageStyles} >
@@ -17,20 +18,20 @@ const ProductPage: React.FC<OneProductPageProps> = ({ images, description, disco
                     <CarouselProduct images={images} />
                     <ImagesModal images={images} />
                 </Box>
-                <Stack sx={{ flex: '1 1 auto', height: '100%' }} gap={3}>
+                <Stack sx={ProductContentStyles} >
                     <Typography variant='h2' fontWeight={600} fontSize={{ md: '3.75rem', xs: '2.5rem' }} >{title}</Typography>
                     <Stack direction={'row'} alignItems={'center'} gap={0.5} justifyContent={'space-between'}>
                         <Stack sx={RatingWrapperStyles}>
                             <Typography variant='caption' sx={RatingStyles}>{rating}</Typography>
                             <Rating size='large' value={rating} readOnly precision={0.1} />
                         </Stack>
-                        <Typography variant='caption' sx={{ fontWeight: 300, fontSize: '14px' }}>id: {id}</Typography>
+                        <Typography variant='caption' sx={IdStyles}>id: {id}</Typography>
                     </Stack>
                     <Divider />
                     <Stack direction={'row'} alignItems={'center'} >
                         <Typography variant='h6' sx={{ opacity: 0.7 }}>Price: </Typography>
                         <Stack margin={'0 24px 0 12px'}>
-                            <Typography variant='subtitle1' sx={OldPriceStyles}>${(price + price * discountPercentage / 100).toFixed(0)}</Typography>
+                            <Typography variant='subtitle1' sx={OldPriceStyles}>${toOldPrice(price, discountPercentage)}</Typography>
                             <Typography variant='h5' sx={PriceStyles}>${price}</Typography>
                         </Stack>
                         <Typography variant='body1' component={'div'} sx={EconomyStyles}>Economy {discountPercentage}%</Typography>
@@ -38,19 +39,11 @@ const ProductPage: React.FC<OneProductPageProps> = ({ images, description, disco
                     <Typography variant='h5'>Availible in stock: {stock}</Typography>
                     <List >
                         {Object.entries(info).map(([key, value]) => (
-                            <ListItem key={key} sx={{ paddingLeft: 0 }}>
-                                <ListItemText sx={{ flex: '0 0 130px' }} primaryTypographyProps={{
-                                    fontWeight: 300,
-                                    fontSize: '24px',
-                                    textTransform: 'capitalize',
-                                }}>
+                            <ListItem key={key} sx={ListItemStyles}>
+                                <ListItemText sx={ListItemTextStyles} primaryTypographyProps={ListTextKeyStyles}>
                                     {key}
                                 </ListItemText>
-                                <ListItemText primaryTypographyProps={{
-                                    fontWeight: 500,
-                                    fontSize: '24px',
-                                    textTransform: 'capitalize',
-                                }} >{value}</ListItemText>
+                                <ListItemText primaryTypographyProps={ListTextValueStyles}>{value}</ListItemText>
                             </ListItem>))}
                     </List>
                     <Divider />
@@ -59,7 +52,7 @@ const ProductPage: React.FC<OneProductPageProps> = ({ images, description, disco
                 </Stack>
             </Stack>
             <Link href={'/products'}>
-                <IconButton sx={{ position: 'absolute', top: '12px', right: '12px' }} size='large'  ><ArrowBackIcon color='primary' /></IconButton>
+                <IconButton sx={ArrowBackStyles} size='large'><ArrowBackIcon color='primary' /></IconButton>
             </Link>
         </Box>
     )
