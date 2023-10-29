@@ -104,7 +104,6 @@ export const CarouselImageStyles = {
 export const CarouselWrapperStyles = {
     flex: { md: '0 0 30%' },
     height: '100%',
-    maxHeight: '500px',
     maxWidth: '50%'
 }
 export const ModalImagesStyles = {

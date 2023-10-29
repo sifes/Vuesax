@@ -5,6 +5,7 @@ import { Box, Stack } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
 import { ImagesModalProps } from '@/utils/types';
 import { ButtonStyles, CarouselImageStyles, ModalImagesStyles } from './ui';
+import Image from 'next/legacy/image';
 
 
 export const ImagesModal: React.FC<ImagesModalProps> = ({ images }) => {
@@ -27,7 +28,7 @@ export const ImagesModal: React.FC<ImagesModalProps> = ({ images }) => {
                     >
                         {images.map(image => (
                             <Box key={image} sx={CarouselImageStyles}>
-                                <img src={image} alt='product image' />
+                                <Image src={image} alt='product image' width={800} height={600} layout="responsive" />
                             </Box>
                         ))}
                     </Carousel>

@@ -4,6 +4,7 @@ import React from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { CarouselImageStyles } from './ui';
+import Image from 'next/image';
 
 
 export const CarouselProduct: React.FC<CarouselProductProps> = ({ images }) => {
@@ -18,7 +19,7 @@ export const CarouselProduct: React.FC<CarouselProductProps> = ({ images }) => {
         >
             {images.map(image => (
                 <Box key={image} sx={CarouselImageStyles}>
-                    <img src={image} alt='product image' />
+                    <Image src={image} alt='product image' width={800} height={600} layout="responsive" />
                 </Box>
             ))}
         </Carousel>
