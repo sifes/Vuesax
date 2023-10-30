@@ -1,3 +1,10 @@
+
+/**
+* @comment same again, styles are not store in .tsx files, have a saparate <YOUR_COMPONENT_NAME>.styles.ts file, if u wish
+ * you could read the code on cool next codestyle here:
+ * @link https://github.com/shadcn-ui/taxonomy
+* */
+
 export const HomePageStyles = {
     minHeight: '100vh',
     bgcolor: 'secondary.main',

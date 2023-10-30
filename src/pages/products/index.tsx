@@ -1,13 +1,16 @@
 import { Filters } from '@/widgets/Filters'
-import { Products } from '@/widgets/Products'
-import { PaginationProducts } from '@/widgets/Products/PaginationProducts'
-import { SearchProducts } from '@/widgets/Products/SearchProducts'
+/**
+* @comment components have incorrectly resolved paths
+* */
+import { Products } from '@/widgets/products'
+import { PaginationProducts } from '@/widgets/products/PaginationProducts'
+import { SearchProducts } from '@/widgets/products/SearchProducts'
 import React from 'react'
 import axios from 'axios';
 import { toPagesCount } from '@/utils/helpers'
 import { ProductsPageProps } from '@/utils/types'
 import { GetServerSideProps } from 'next'
-import { ProductsPageWrapper, ProductsWrapper } from '@/widgets/Products/ui'
+import { ProductsPageWrapper, ProductsWrapper } from '@/widgets/products/ui'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
 
 const ProductsPage: React.FC<ProductsPageProps> = ({ initialProducts }) => {

@@ -23,7 +23,11 @@ export const SearchProducts: React.FC<SearchProductsProps> = ({ products }) => {
             sx={AutocompleteStyles}
             onChange={(_event, value) => value ? window.location.href = `/products/${value.id}` : null}
             renderInput={(params) => <TextField {...params} label="Search for a product" />}
-            PopperComponent={(params) => <Popper {...params} sx={PopperStyles} />}
+            // PopperComponent={(params) => <Popper {...params} sx={PopperStyles} />}
+            slotProps={{popper:{sx:PopperStyles}}}
+            /**
+            * @comment basically the same, but using slots is a standard way to customize components
+            * */
             fullWidth
         />
     )
