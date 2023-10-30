@@ -4,6 +4,9 @@ export const useLocalStorage = (key: string, initialValue: any) => {
     const [storedValue, setStoredValue] = React.useState(() => {
         try {
             const item = window.localStorage.getItem(key)
+            /**
+             * @comment getItem doesn't throw errors, does it?
+            * */
             return item ? JSON.parse(item) : initialValue
         } catch (error) {
             return initialValue

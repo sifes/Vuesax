@@ -10,6 +10,10 @@ import { ArrowBackStyles, CarouselWrapperStyles, EconomyStyles, IdStyles, ListIt
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Link from 'next/link'
 import { toOldPrice } from '@/utils/helpers'
+
+/**
+* @comment again component has too many parts in it, it's hard to read
+* */
 const ProductPage: React.FC<OneProductPageProps> = ({ images, description, discountPercentage, id, price, rating, stock, thumbnail, title, ...info }) => {
     return (
         <Box sx={ProductPageStyles} >

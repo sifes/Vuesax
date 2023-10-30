@@ -28,6 +28,9 @@ export const ImagesModal: React.FC<ImagesModalProps> = ({ images }) => {
                     >
                         {images.map(image => (
                             <Box key={image} sx={CarouselImageStyles}>
+                                {/*
+                                   @comment add object-fit:cover to fit image in a container
+                                */}
                                 <Image src={image} alt='product image' width={800} height={600} layout="responsive" />
                             </Box>
                         ))}
