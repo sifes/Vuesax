@@ -10,7 +10,5 @@
     { "handle": "filesystem" },
     { "src": "/.*", "dest": "index.html" }
     ],
-    "alias": {
-    "@/*": "./src/*"
-    }
+    "alias":  ["@/*", "./src/*"]
 }
