@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Box, IconButton } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TelegramIcon from '@mui/icons-material/Telegram';
-import { Logo } from '@/widgets/shared/ui/Logo';
 import { FooterContentStyles, FooterIconStyles, FooterStyles } from './ui';
+import { Logo } from './ui/Logo';
 
 export function Footer() {
     return (
