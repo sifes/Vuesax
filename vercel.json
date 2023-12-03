@@ -1,0 +1,16 @@
+{
+    "builds": [
+    {
+        "src": "next.config.js",
+        "use": "@now/next"
+    }
+    ],
+    "routes": [
+    { "src": "^/static/(.*)", "dest": "/static/$1" },
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "index.html" }
+    ],
+    "alias": {
+    "@/*": "./src/*"
+    }
+}
