@@ -1,15 +1,39 @@
 import axios from 'axios'
 import { GetServerSideProps } from 'next'
 import React from 'react'
-import { CarouselProduct } from '@/widgets/ProductPage/CarouselProduct'
-import { Box, Divider, IconButton, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
-import Rating from '@mui/material/Rating';
-import { ImagesModal } from '@/widgets/ProductPage/ImagesModal'
-import { OneProductPageProps } from '@/utils/types'
-import { ArrowBackStyles, CarouselWrapperStyles, EconomyStyles, IdStyles, ListItemStyles, ListItemTextStyles, ListTextKeyStyles, ListTextValueStyles, OldPriceStyles, PriceStyles, ProductContentStyles, ProductPageStyles, RatingStyles, RatingWrapperStyles } from '@/widgets/ProductPage/ui'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { CarouselProduct } from './src/widgets/ProductPage/CarouselProduct'
+import {
+  Box,
+  Divider,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  Stack,
+  Typography,
+} from '@mui/material'
+import Rating from '@mui/material/Rating'
+import { ImagesModal } from './src/widgets/ProductPage/ImagesModal'
+import { OneProductPageProps } from './src/utils/types'
+import {
+  ArrowBackStyles,
+  CarouselWrapperStyles,
+  EconomyStyles,
+  IdStyles,
+  ListItemStyles,
+  ListItemTextStyles,
+  ListTextKeyStyles,
+  ListTextValueStyles,
+  OldPriceStyles,
+  PriceStyles,
+  ProductContentStyles,
+  ProductPageStyles,
+  RatingStyles,
+  RatingWrapperStyles,
+} from './src/widgets/ProductPage/ui'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import Link from 'next/link'
-import { toOldPrice } from '@/utils/helpers'
+import { toOldPrice } from './src/utils/helpers'
 
 /**
 * @comment again component has too many parts in it, it's hard to read
