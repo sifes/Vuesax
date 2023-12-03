@@ -2,10 +2,10 @@ import React from 'react'
 import { Grid, Card, CardContent, Typography, CardActions, Button, CardMedia, Box } from '@mui/material'
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-import { ProductsProps } from '@/utils/types';
+import { ProductsProps } from 'src/utils/types';
 import { BrandStyles, CategoryStyles, GridProductsStyles, NoProductStyles, OldPriceStyles, PriceStyles, PriceWrapperStyles, ProductContentHeaderStyles, ProductContentInfoStyles, ProductContentStyles, ProductMediaStyles, ProductStyles, SkeletonStyles, StarsWrapperStyles, TitleStyles } from './ui';
 import Link from 'next/link';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { useLocalStorage } from 'src/hooks/useLocalStorage';
 import NoProductsIcon from '@mui/icons-material/ProductionQuantityLimits';
 export const Products: React.FC<ProductsProps> = ({ products, page }) => {
     const [currentProducts, setCurrentProducts] = React.useState(products)

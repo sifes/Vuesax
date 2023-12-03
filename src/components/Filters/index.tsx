@@ -1,13 +1,19 @@
 import React from 'react'
 import { Drawer, Divider, Button, IconButton, Stack } from '@mui/material'
-import SortIcon from '@mui/icons-material/Sort';
-import { toCategories, toMaxPrice } from '@/utils/helpers'
-import { FiltersProps } from '@/utils/types'
-import { FiltersIconStyles, FiltersMobileWrapper, FiltersWrapper, ModalContentStyles, ModalFiltersStyles } from './ui'
-import { useLocalStorage } from '@/hooks/useLocalStorage'
-import { RatingFilter } from './Rating';
-import Category from './Category';
-import { PriceSlider } from './PriceSlider';
+import SortIcon from '@mui/icons-material/Sort'
+import {
+  FiltersIconStyles,
+  FiltersMobileWrapper,
+  FiltersWrapper,
+  ModalContentStyles,
+  ModalFiltersStyles,
+} from './ui'
+import { RatingFilter } from './Rating'
+import Category from './Category'
+import { PriceSlider } from './PriceSlider'
+import { useLocalStorage } from 'src/hooks/useLocalStorage'
+import { toMaxPrice, toCategories } from 'src/utils/helpers'
+import { FiltersProps } from 'src/utils/types'
 
 export const Filters: React.FC<FiltersProps> = ({ products, setProducts }) => {
     const maxPrice = toMaxPrice(products)
