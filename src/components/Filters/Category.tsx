@@ -1,7 +1,13 @@
 import React, { ChangeEvent } from 'react'
-import { Box, Typography, FormGroup, FormControlLabel, Checkbox } from '@mui/material'
-import { CategoryProps } from '@/utils/types'
 import { FormGroupStyles } from '../Filters/ui'
+import {
+  Box,
+  Typography,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+} from '@mui/material'
+import { CategoryProps } from 'src/utils/types'
 
 const Category: React.FC<CategoryProps> = ({ activeCategories, setActiveCategories, categories }) => {
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {

@@ -1,7 +1,7 @@
-import { HomeContentStyles, HomeImageWrapperStyles, HomePageStyles, HomeTextStyles, HomeTitleStyles } from "@/widgets/HomePage/ui";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import Image from "next/legacy/image";
 import Link from "next/link";
+import { HomeContentStyles, HomeImageWrapperStyles, HomePageStyles, HomeTextStyles, HomeTitleStyles } from "src/components/HomePage/ui";
 
 
 export default function Home() {
