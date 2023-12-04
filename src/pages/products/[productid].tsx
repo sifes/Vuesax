@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { GetServerSideProps } from 'next'
 import React from 'react'
-import { CarouselProduct } from './src/widgets/ProductPage/CarouselProduct'
 import {
   Box,
   Divider,
@@ -13,27 +12,29 @@ import {
   Typography,
 } from '@mui/material'
 import Rating from '@mui/material/Rating'
-import { ImagesModal } from './src/widgets/ProductPage/ImagesModal'
-import { OneProductPageProps } from './src/utils/types'
+
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import Link from 'next/link'
+import { CarouselProduct } from 'src/components/ProductPage/CarouselProduct'
+import { ImagesModal } from 'src/components/ProductPage/ImagesModal'
 import {
-  ArrowBackStyles,
+  ProductPageStyles,
   CarouselWrapperStyles,
-  EconomyStyles,
+  ProductContentStyles,
+  RatingWrapperStyles,
+  RatingStyles,
   IdStyles,
+  OldPriceStyles,
+  PriceStyles,
+  EconomyStyles,
   ListItemStyles,
   ListItemTextStyles,
   ListTextKeyStyles,
   ListTextValueStyles,
-  OldPriceStyles,
-  PriceStyles,
-  ProductContentStyles,
-  ProductPageStyles,
-  RatingStyles,
-  RatingWrapperStyles,
-} from './src/widgets/ProductPage/ui'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import Link from 'next/link'
-import { toOldPrice } from './src/utils/helpers'
+  ArrowBackStyles,
+} from 'src/components/ProductPage/ui'
+import { toOldPrice } from 'src/utils/helpers'
+import { OneProductPageProps } from 'src/utils/types'
 
 /**
 * @comment again component has too many parts in it, it's hard to read
