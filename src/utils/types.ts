@@ -1,60 +1,58 @@
-
 export interface IProduct {
-    brand: string
-    category: string
-    description: string
-    discountPercentage: number
-    id: number
-    images: string[]
-    price: number
-    rating: number
-    stock: number
-    thumbnail: string
-    title: string
+  brand: string
+  category: string
+  description: string
+  discountPercentage: number
+  id: number
+  images: string[]
+  price: number
+  rating: number
+  stock: number
+  thumbnail: string
+  title: string
 }
 export interface IFilters {
-    category: string
-    price: number
-    rating: number
+  category: string
+  price: number
+  rating: number
 }
 export interface ProductsPageProps {
-    initialProducts: IProduct[];
+  initialProducts: IProduct[]
 }
 export interface ImagesModalProps {
-    images: string[]
+  images: string[]
 }
 export interface CarouselProductProps {
-    images: string[]
+  images: string[]
 }
 export interface CategoryProps {
-    categories: string[]
-    setActiveCategories: React.Dispatch<React.SetStateAction<string[]>>
-    activeCategories: string[]
+  categories: string[]
+  setActiveCategories: React.Dispatch<React.SetStateAction<string[]>>
+  activeCategories: string[]
 }
 export interface FiltersProps {
-    products: IProduct[]
-    setProducts: React.Dispatch<React.SetStateAction<IProduct[]>>
+  products: IProduct[]
+  setProducts: React.Dispatch<React.SetStateAction<IProduct[]>>
 }
 export interface PriceSliderProps {
-    activePrice: number[]
-    maxPrice: number
-    setActivePrice: React.Dispatch<React.SetStateAction<number[]>>
+  activePrice: number[]
+  maxPrice: number
+  setActivePrice: React.Dispatch<React.SetStateAction<number[]>>
 }
 export interface RatingProps {
-    activeRating: number
-    setActiveRating: React.Dispatch<React.SetStateAction<number>>
+  activeRating: number
+  setActiveRating: React.Dispatch<React.SetStateAction<number>>
 }
 export interface PaginationProductsProps {
-    page: number;
-    setPage: React.Dispatch<React.SetStateAction<number>>
-    count: number
+  page: number
+  setPage: React.Dispatch<React.SetStateAction<number>>
+  count: number
 }
 export interface ProductsProps {
-    products: IProduct[]
-    page: number
+  products: IProduct[]
+  page: number
 }
-export interface OneProductPageProps extends IProduct {
-}
+export interface OneProductPageProps extends IProduct {}
 export interface SearchProductsProps {
-    products: IProduct[]
+  products: IProduct[]
 }

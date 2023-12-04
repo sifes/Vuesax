@@ -1,17 +1,17 @@
-import { Filters } from './src/widgets/Filters'
-/**
- * @comment components have incorrectly resolved paths
- * */
-import { Products } from './src/widgets/products'
-import { PaginationProducts } from './src/widgets/products/PaginationProducts'
-import { SearchProducts } from './src/widgets/products/SearchProducts'
 import React from 'react'
 import axios from 'axios'
-import { toPagesCount } from './src/utils/helpers'
-import { ProductsPageProps } from './src/utils/types'
 import { GetServerSideProps } from 'next'
-import { ProductsPageWrapper, ProductsWrapper } from './src/widgets/products/ui'
-import { useLocalStorage } from './src/hooks/useLocalStorage'
+import { Filters } from 'src/components/Filters'
+import { Products } from 'src/components/Products'
+import { PaginationProducts } from 'src/components/Products/PaginationProducts'
+import { SearchProducts } from 'src/components/Products/SearchProducts'
+import {
+  ProductsPageWrapper,
+  ProductsWrapper,
+} from 'src/components/Products/ui'
+import { useLocalStorage } from 'src/hooks/useLocalStorage'
+import { toPagesCount } from 'src/utils/helpers'
+import { ProductsPageProps } from 'src/utils/types'
 
 const ProductsPage: React.FC<ProductsPageProps> = ({ initialProducts }) => {
   const [products, setProducts] = React.useState(initialProducts)
