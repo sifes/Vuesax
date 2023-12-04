@@ -2,7 +2,7 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Popper } from '@mui/material';
-import { IProduct, SearchProductsProps } from '@/utils/types';
+import { IProduct, SearchProductsProps } from 'src/utils/types';
 import { AutocompleteStyles, PopperStyles } from './ui';
 
 export const SearchProducts: React.FC<SearchProductsProps> = ({ products }) => {

@@ -1,9 +1,4 @@
 import { Stack, styled } from "@mui/material";
-
-//// <--- Products ---> ////
-/**
- * @comment why styles are in index.tsx file? .tsx files are used for components, not for styles
-* */
 export const ProductsPageWrapper = styled(Stack)(({ theme }) => ({
     width: '100%',
     display: 'flex',

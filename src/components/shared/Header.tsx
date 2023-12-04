@@ -7,8 +7,8 @@ import { List } from '@mui/material';
 import { ListItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Toolbar } from '@mui/material';
-import { Logo } from '@/widgets/shared/ui/Logo';
 import { HeaderDrawerStyles, HeaderIconStyles, HeaderLinksStyles, HeaderToolbarStyles, NavLink } from './ui';
+import { Logo } from './ui/Logo';
 
 export function Header() {
     const [mobileOpen, setMobileOpen] = React.useState(false);

@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { Box, Stack } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
-import { ImagesModalProps } from '@/utils/types';
+import { ImagesModalProps } from 'src/utils/types'
 import { ButtonStyles, CarouselImageStyles, ModalImagesStyles } from './ui';
 import Image from 'next/legacy/image';
 
