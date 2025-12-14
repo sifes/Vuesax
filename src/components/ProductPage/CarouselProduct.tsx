@@ -1,10 +1,14 @@
 import { CarouselProductProps } from 'src/utils/types'
 import { Box } from '@mui/material'
 import React from 'react'
-import { Carousel } from 'react-responsive-carousel'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import dynamic from 'next/dynamic'
 import { CarouselImageStyles } from './ui'
 import Image from 'next/image'
+
+const Carousel = dynamic(
+  () => import('react-responsive-carousel').then((mod) => mod.Carousel),
+  { ssr: false }
+) as any
 
 export const CarouselProduct: React.FC<CarouselProductProps> = ({ images }) => {
   return (

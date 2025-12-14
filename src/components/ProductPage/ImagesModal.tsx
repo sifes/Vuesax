@@ -2,10 +2,15 @@ import React from 'react'
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { Box, Stack } from '@mui/material';
-import { Carousel } from 'react-responsive-carousel';
+import dynamic from 'next/dynamic';
 import { ImagesModalProps } from 'src/utils/types'
 import { ButtonStyles, CarouselImageStyles, ModalImagesStyles } from './ui';
 import Image from 'next/legacy/image';
+
+const Carousel = dynamic(
+  () => import('react-responsive-carousel').then((mod) => mod.Carousel),
+  { ssr: false }
+) as any
 
 
 export const ImagesModal: React.FC<ImagesModalProps> = ({ images }) => {

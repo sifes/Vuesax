@@ -4,7 +4,10 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap" />
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/react-responsive-carousel@3.2.23/lib/styles/carousel.min.css"
+        />
       </Head>
       <body>
         <Main />

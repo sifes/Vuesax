@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import { Filters } from 'src/components/Filters'
 import { Products } from 'src/components/Products'
 import { PaginationProducts } from 'src/components/Products/PaginationProducts'
@@ -15,7 +15,7 @@ import { ProductsPageProps } from 'src/utils/types'
 
 const ProductsPage: React.FC<ProductsPageProps> = ({ initialProducts }) => {
   const [products, setProducts] = React.useState(initialProducts)
-  const [page, setPage] = React.useState(useLocalStorage('currentPage', 1)[0])
+  const [page, setPage] = React.useState(1)
   return (
     <ProductsPageWrapper>
       <Filters products={initialProducts} setProducts={setProducts} />
@@ -39,10 +39,12 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ initialProducts }) => {
 
 export default ProductsPage
 
-export const getServerSideProps: GetServerSideProps<
+export const getStaticProps: GetStaticProps<
   ProductsPageProps
 > = async () => {
   const response = await axios.get(`https://dummyjson.com/products?limit=100`)
   const data = response.data
-  return { props: { initialProducts: data.products } }
+  return {
+    props: { initialProducts: data.products }
+  }
 }

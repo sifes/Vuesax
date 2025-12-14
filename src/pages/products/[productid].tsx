@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GetServerSideProps } from 'next'
+import { GetStaticProps, GetStaticPaths } from 'next'
 import React from 'react'
 import {
   Box,
@@ -15,8 +15,7 @@ import Rating from '@mui/material/Rating'
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import Link from 'next/link'
-import { CarouselProduct } from 'src/components/ProductPage/CarouselProduct'
-import { ImagesModal } from 'src/components/ProductPage/ImagesModal'
+import dynamic from 'next/dynamic'
 import {
   ProductPageStyles,
   CarouselWrapperStyles,
@@ -35,6 +34,9 @@ import {
 } from 'src/components/ProductPage/ui'
 import { toOldPrice } from 'src/utils/helpers'
 import { OneProductPageProps } from 'src/utils/types'
+
+const CarouselProduct = dynamic(() => import('src/components/ProductPage/CarouselProduct').then(mod => mod.CarouselProduct), { ssr: false })
+const ImagesModal = dynamic(() => import('src/components/ProductPage/ImagesModal').then(mod => mod.ImagesModal), { ssr: false })
 
 /**
 * @comment again component has too many parts in it, it's hard to read
@@ -72,7 +74,9 @@ const ProductPage: React.FC<OneProductPageProps> = ({ images, description, disco
                                 <ListItemText sx={ListItemTextStyles} primaryTypographyProps={ListTextKeyStyles}>
                                     {key}
                                 </ListItemText>
-                                <ListItemText primaryTypographyProps={ListTextValueStyles}>{value}</ListItemText>
+                                <ListItemText primaryTypographyProps={ListTextValueStyles}>
+                                    {typeof value === 'object' && value !== null ? JSON.stringify(value) : String(value)}
+                                </ListItemText>
                             </ListItem>))}
                     </List>
                     <Divider />
@@ -87,9 +91,25 @@ const ProductPage: React.FC<OneProductPageProps> = ({ images, description, disco
     )
 }
 
-export const getServerSideProps: GetServerSideProps<OneProductPageProps> = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+    const response = await axios.get('https://dummyjson.com/products?limit=100')
+    const products = response.data.products
+
+    const paths = products.map((product: any) => ({
+        params: { productid: product.id.toString() }
+    }))
+
+    return {
+        paths,
+        fallback: false
+    }
+}
+
+export const getStaticProps: GetStaticProps<OneProductPageProps> = async ({ params }) => {
     const data = (await axios.get(`https://dummyjson.com/products/${params?.productid}`)).data
-    return { props: { ...data } }
+    return {
+        props: { ...data }
+    }
 }
 export default ProductPage
 

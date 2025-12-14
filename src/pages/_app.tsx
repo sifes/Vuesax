@@ -5,6 +5,7 @@ import { ThemeProvider } from '@mui/material/styles'
 import type { AppProps } from 'next/app'
 import createEmotionCache from '../utils/createEmotionCache';
 import Layout from 'src/components/shared/Layout'
+
 interface MyAppProps extends AppProps {
   emotionCache?: any;
 }
