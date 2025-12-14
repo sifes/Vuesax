@@ -76,21 +76,26 @@ export const RatingStyles = {
     marginTop: '4px'
 }
 // <------------------List (info)------------------> //
-export const ListTextKeyStyles: TypographyProps<"span", { component?: "span" | undefined; }> = {
-    fontWeight: 300,
-    fontSize: '24px',
-    textTransform: 'capitalize',
+export const ListTextKeyStyles = {
+    fontWeight: 400,
+    fontSize: { md: '16px', sm: '14px', xs: '13px' },
+    textTransform: 'capitalize' as const,
+    opacity: 0.7,
+    letterSpacing: '0.5px'
 }
-export const ListTextValueStyles: TypographyProps<"span", { component?: "span" | undefined; }> = {
-    fontWeight: 500,
-    fontSize: '24px',
-    textTransform: 'capitalize',
+export const ListTextValueStyles = {
+    fontWeight: 600,
+    fontSize: { md: '20px', sm: '18px', xs: '16px' },
+    textTransform: 'capitalize' as const,
 }
 export const ListItemStyles = {
-    paddingLeft: 0
+    paddingLeft: 0,
+    paddingTop: { md: 2, xs: 1.5 },
+    paddingBottom: { md: 2, xs: 1.5 }
 }
 export const ListItemTextStyles = {
-    flex: '0 0 130px'
+    flex: { md: '0 0 180px', xs: '0 0 120px' },
+    minWidth: { md: '180px', xs: '120px' }
 }
 // <------------------Images------------------> //
 export const CarouselImageStyles = {
@@ -102,9 +107,10 @@ export const CarouselImageStyles = {
     margin: '0 auto'
 }
 export const CarouselWrapperStyles = {
-    flex: { md: '0 0 30%' },
+    flex: { md: '0 0 30%', xs: '1 1 100%' },
     height: '100%',
-    maxWidth: '50%'
+    maxWidth: { md: '50%', xs: '100%' },
+    width: '100%'
 }
 export const ModalImagesStyles = {
     position: 'absolute',
